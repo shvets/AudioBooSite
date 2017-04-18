@@ -53,7 +53,7 @@
 		36F91E361EA6BE09007E152D = {
 			isa = PBXGroup;
 			children = (
-				36F91E421EA6BE09007E152D /* AudioBooSite */,
+				36F91E421EA6BE09007E152D /* Sources */,
 				36F91E4D1EA6BE09007E152D /* AudioBooSiteTests */,
 				36F91E411EA6BE09007E152D /* Products */,
 			);
@@ -68,13 +68,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		36F91E421EA6BE09007E152D /* AudioBooSite */ = {
+		36F91E421EA6BE09007E152D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				36F91E431EA6BE09007E152D /* AudioBooSite.h */,
 				36F91E441EA6BE09007E152D /* Info.plist */,
 			);
-			path = AudioBooSite;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		36F91E4D1EA6BE09007E152D /* AudioBooSiteTests */ = {
@@ -330,7 +330,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AudioBooSite/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rubikon.AudioBooSite;
@@ -349,7 +349,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = AudioBooSite/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rubikon.AudioBooSite;
