@@ -1,0 +1,91 @@
+import UIKit
+import SwiftyJSON
+import TVSetKit
+
+open class AudioBooTableViewController: BaseTableViewController {
+  static let SegueIdentifier = "Audio Boo"
+
+  override open var CellIdentifier: String { return "AudioBooTableCell" }
+  override open var BundleId: String { return AudioBooServiceAdapter.BundleId }
+
+  override open func viewDidLoad() {
+    super.viewDidLoad()
+
+    self.clearsSelectionOnViewWillAppear = false
+
+    title = localizer.localize("AudioBoo")
+
+    self.clearsSelectionOnViewWillAppear = false
+
+    loadData()
+  }
+
+  func loadData() {
+    items.append(MediaItem(name: "Bookmarks", imageName: "Star"))
+    items.append(MediaItem(name: "History", imageName: "Bookmark"))
+    items.append(MediaItem(name: "Authors", imageName: "Mark Twain"))
+    items.append(MediaItem(name: "Settings", imageName: "Engineering"))
+    items.append(MediaItem(name: "Search", imageName: "Search"))
+  }
+
+  override open func navigate(from view: UITableViewCell) {
+    let mediaItem = getItem(for: view)
+
+    switch mediaItem.name! {
+      case "Authors":
+        performSegue(withIdentifier: "Authors Letters", sender: view)
+
+      case "Settings":
+        performSegue(withIdentifier: "Settings", sender: view)
+
+      case "Search":
+        performSegue(withIdentifier: SearchTableController.SegueIdentifier, sender: view)
+
+      default:
+        performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
+    }
+  }
+
+  override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let identifier = segue.identifier {
+      switch identifier {
+        case AuthorsLettersTableViewController.SegueIdentifier:
+          if let destination = segue.destination.getActionController() as? AuthorsLettersTableViewController {
+            let adapter = AudioBooServiceAdapter(mobile: true)
+
+            adapter.requestType = "Authors Letters"
+            destination.adapter = adapter
+          }
+
+        case MediaItemsController.SegueIdentifier:
+          if let destination = segue.destination.getActionController() as? MediaItemsController,
+             let view = sender as? MediaNameTableCell {
+
+            let mediaItem = getItem(for: view)
+
+            let adapter = AudioBooServiceAdapter(mobile: true)
+
+            adapter.requestType = mediaItem.name
+            adapter.parentName = localizer.localize(mediaItem.name!)
+
+            destination.adapter = adapter
+          }
+
+        case SearchTableController.SegueIdentifier:
+          if let destination = segue.destination.getActionController() as? SearchTableController {
+
+            let adapter = AudioBooServiceAdapter(mobile: true)
+
+            adapter.requestType = "Search"
+            adapter.parentName = localizer.localize("Search Results")
+
+            destination.adapter = adapter
+          }
+
+        default: break
+      }
+    }
+  }
+
+}
+
