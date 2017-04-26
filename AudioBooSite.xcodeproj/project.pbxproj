@@ -22,11 +22,12 @@
 		D56A79475E9FD2FA43066D7C /* AudioBooService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A79F6DD87F2711478CAB6 /* AudioBooService.swift */; };
 		D56A7D121313058FDE6A6FDE /* AuthorsLettersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A711BC6FBB3D5C367F8C3 /* AuthorsLettersTableViewController.swift */; };
 		FA6C124A1EAEDF3800DA4A90 /* Runglish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6C12481EAEDF3800DA4A90 /* Runglish.framework */; };
-		FA6C124F1EAEDF4B00DA4A90 /* Just.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6C124C1EAEDF4B00DA4A90 /* Just.framework */; };
 		FA6C12501EAEDF4B00DA4A90 /* SwiftSoup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6C124D1EAEDF4B00DA4A90 /* SwiftSoup.framework */; };
 		FA6C12511EAEDF4B00DA4A90 /* TVSetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6C124E1EAEDF4B00DA4A90 /* TVSetKit.framework */; };
 		FA6C12531EAEDF7D00DA4A90 /* WebAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6C12521EAEDF7D00DA4A90 /* WebAPI.framework */; };
 		FA6C12551EAEDFBE00DA4A90 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6C12541EAEDFBE00DA4A90 /* SwiftyJSON.framework */; };
+		FA6C12851EB04B7D00DA4A90 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6C12841EB04B7D00DA4A90 /* Alamofire.framework */; };
+		FA73FD021EB0CB4800A26CD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA73FD041EB0CB4800A26CD8 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,9 @@
 		FA6C124E1EAEDF4B00DA4A90 /* TVSetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVSetKit.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/EtvnetApp-auvgeykttffxrlaelzqpbfeqnwis/Build/Products/Debug-iphonesimulator/TVSetKit.framework"; sourceTree = "<group>"; };
 		FA6C12521EAEDF7D00DA4A90 /* WebAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebAPI.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/EtvnetApp-auvgeykttffxrlaelzqpbfeqnwis/Build/Products/Debug-iphonesimulator/WebAPI.framework"; sourceTree = "<group>"; };
 		FA6C12541EAEDFBE00DA4A90 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/EtvnetApp-auvgeykttffxrlaelzqpbfeqnwis/Build/Products/Debug-iphonesimulator/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		FA6C12841EB04B7D00DA4A90 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../WebAPI/build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		FA73FD031EB0CB4800A26CD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA73FD051EB0CB5000A26CD8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +83,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6C12851EB04B7D00DA4A90 /* Alamofire.framework in Frameworks */,
 				FA6C12551EAEDFBE00DA4A90 /* SwiftyJSON.framework in Frameworks */,
 				FA6C12531EAEDF7D00DA4A90 /* WebAPI.framework in Frameworks */,
-				FA6C124F1EAEDF4B00DA4A90 /* Just.framework in Frameworks */,
 				FA6C12501EAEDF4B00DA4A90 /* SwiftSoup.framework in Frameworks */,
 				FA6C12511EAEDF4B00DA4A90 /* TVSetKit.framework in Frameworks */,
 				FA6C124A1EAEDF3800DA4A90 /* Runglish.framework in Frameworks */,
@@ -128,6 +132,7 @@
 				D56A79F6DD87F2711478CAB6 /* AudioBooService.swift */,
 				D56A7A879EED3E022AE748B8 /* AudioBooServiceAdapter.swift */,
 				D56A702C1A4E27B1D199C5F9 /* ios */,
+				FA73FD041EB0CB4800A26CD8 /* Localizable.strings */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 		FA6C122E1EAED8F500DA4A90 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA6C12841EB04B7D00DA4A90 /* Alamofire.framework */,
 				FA6C12541EAEDFBE00DA4A90 /* SwiftyJSON.framework */,
 				FA6C12521EAEDF7D00DA4A90 /* WebAPI.framework */,
 				FA6C124C1EAEDF4B00DA4A90 /* Just.framework */,
@@ -273,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA73FD021EB0CB4800A26CD8 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +328,18 @@
 			targetProxy = 36F91E4B1EA6BE09007E152D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA73FD041EB0CB4800A26CD8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA73FD031EB0CB4800A26CD8 /* en */,
+				FA73FD051EB0CB5000A26CD8 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		36F91E521EA6BE09007E152D /* Debug */ = {
