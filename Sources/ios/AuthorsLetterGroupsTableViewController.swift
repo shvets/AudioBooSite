@@ -35,7 +35,7 @@ class AuthorsLetterGroupsTableViewController: BaseTableViewController {
 
             let adapter = AudioBooServiceAdapter(mobile: true)
 
-            adapter.requestType = "Group Authors"
+            adapter.requestType = "Authors"
             adapter.selectedItem = getItem(for: view)
             destination.adapter = adapter
           }

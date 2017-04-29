@@ -43,6 +43,7 @@ class AudioBooServiceAdapter: ServiceAdapter {
     var params = RequestParams()
 
     params.identifier = requestType == "Search" ? query : parentId
+    //params.version = version
     params.bookmarks = bookmarks
     params.history = history
     params.selectedItem = selectedItem

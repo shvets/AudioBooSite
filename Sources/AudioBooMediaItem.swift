@@ -28,4 +28,19 @@ class AudioBooMediaItem: MediaItem {
     return true
   }
 
+  override func hasMultipleVersions() -> Bool {
+    var playlistUrls: [Any] = []
+
+    do {
+      playlistUrls = try service.getPlaylistUrls(id!)
+    }
+    catch {
+      print("Error getting urls playlist")
+    }
+
+    print(playlistUrls)
+
+    return playlistUrls.count > 1
+  }
+
 }

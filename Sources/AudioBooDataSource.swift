@@ -11,11 +11,7 @@ class AudioBooDataSource: DataSource {
 
     let selectedItem = params.selectedItem
 
-    var request = requestType
-
-    if selectedItem?.type == "book" {
-      request = "Tracks"
-    }
+    let request = requestType
 
     switch request {
       case "Bookmarks":
@@ -29,11 +25,6 @@ class AudioBooDataSource: DataSource {
           history.load()
           result = history.getHistoryItems(pageSize: pageSize, page: currentPage)
         }
-
-      case "Author":
-        let path = selectedItem!.id
-
-        result = try service.getBooks(path!)
 
       case "Authors Letters":
          result = try service.getLetters()
@@ -55,17 +46,32 @@ class AudioBooDataSource: DataSource {
           }
         }
 
-      case "Group Authors":
+      case "Authors":
         result = (selectedItem as! AudioBooMediaItem).items
 
+      case "Versions":
+        let path = selectedItem!.id
+
+        let playlistUrls = try service.getPlaylistUrls(path!)
+
+        var list = [[String: String]]()
+
+        for (index, url) in playlistUrls.enumerated() {
+          list.append(["name": "Version \(index+1)", "id": url as! String])
+        }
+
+        result = list
+
+      case "Author":
+        let path = selectedItem!.id
+
+        result = try service.getBooks(path!)
+
       case "Tracks":
-        let bookId = selectedItem!.id!
+        let version = params.version ?? 0
+        let playlistUrls = try service.getPlaylistUrls(selectedItem!.id!)
 
-        let playlistUrls = try service.getPlaylistUrls(bookId)
-
-        print(playlistUrls)
-
-        let url = playlistUrls[0] as! String
+        let url = playlistUrls[version] as! String
 
         result = try service.getAudioTracks(url)
 
