@@ -19,16 +19,7 @@ class AuthorsLettersTableViewController: BaseTableViewController {
   }
 
   override open func navigate(from view: UITableViewCell) {
-    let mediaItem = getItem(for: view)
-
-    let letter = mediaItem.name
-
-    if letter == "Все" {
-      performSegue(withIdentifier: AuthorsTableViewController.SegueIdentifier, sender: view)
-    }
-    else {
-      performSegue(withIdentifier: AuthorsLetterGroupsTableViewController.SegueIdentifier, sender: view)
-    }
+    performSegue(withIdentifier: AuthorsLetterGroupsTableViewController.SegueIdentifier, sender: view)
   }
 
   // MARK: - Navigation
@@ -36,17 +27,6 @@ class AuthorsLettersTableViewController: BaseTableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let identifier = segue.identifier {
       switch identifier {
-        case AuthorsTableViewController.SegueIdentifier:
-          if let destination = segue.destination.getActionController() as? AuthorsTableViewController {
-            let adapter = AudioBooServiceAdapter(mobile: true)
-            adapter.pageLoader.enablePagination()
-            adapter.pageLoader.pageSize = 30
-            adapter.pageLoader.rowSize = 1
-
-            adapter.requestType = "All Authors"
-            destination.adapter = adapter
-          }
-
         case AuthorsLetterGroupsTableViewController.SegueIdentifier:
           if let destination = segue.destination as? AuthorsLetterGroupsTableViewController,
              let view = sender as? MediaNameTableCell {
@@ -55,10 +35,8 @@ class AuthorsLettersTableViewController: BaseTableViewController {
 
             let adapter = AudioBooServiceAdapter(mobile: true)
             adapter.requestType = "Authors Letter Groups"
-            adapter.parentId = mediaItem.name
+            adapter.parentId = mediaItem.id
             destination.adapter = adapter
-
-            //destination.letter = mediaItem.name
           }
 
         default: break

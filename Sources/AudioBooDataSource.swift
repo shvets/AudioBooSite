@@ -33,47 +33,39 @@ class AudioBooDataSource: DataSource {
       case "Author":
         let path = selectedItem!.id
 
-        //result = try service.getBooks(path: path!, page: currentPage)["movies"] as! [Any]
-        result = try service.getBooks(path!) as! [Any]
+        result = try service.getBooks(path!)
 
       case "Authors Letters":
-        //let letters = getLetters(AudioBooService.Authors)
-
-        var list = [Any]()
-
-//        list.append(["name": "Все"])
-//
-//        for letter in letters {
-//          list.append(["name": letter])
-//        }
-
-        result = list
+         result = try service.getLetters()
 
       case "Authors Letter Groups":
-        if let letter = params.identifier {
-          var letterGroups = [Any]()
+        if let path = params.identifier {
+          let authors = try service.getAuthorsByLetter(path)
 
-//          for author in AudioBooService.Authors {
-//            let groupName = author.key
-//            let group = author.value
-//
-//            if groupName[groupName.startIndex] == letter[groupName.startIndex] {
-//              var newGroup: [Any] = []
-//
-//              for el in group {
-//                newGroup.append(["id": el.id, "name": el.name])
-//              }
-//
-//              letterGroups.append(["name": groupName, "items": newGroup])
-//            }
-//          }
+          for (key, value) in authors {
+            let group = value as! [NameClassifier.Item]
 
-          result = letterGroups
+            var newGroup: [[String: String]] = []
+
+            for el in group {
+              newGroup.append(["id": el.id, "name": el.name])
+            }
+
+            result.append(["name": key, "items": newGroup])
+          }
         }
 
+      case "Group Authors":
+        result = (selectedItem as! AudioBooMediaItem).items
 
       case "Tracks":
-        let url = selectedItem!.id!
+        let bookId = selectedItem!.id!
+
+        let playlistUrls = try service.getPlaylistUrls(bookId)
+
+        print(playlistUrls)
+
+        let url = playlistUrls[0] as! String
 
         result = try service.getAudioTracks(url)
 
