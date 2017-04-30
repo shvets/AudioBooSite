@@ -9,19 +9,19 @@ class AudioBooDataSource: DataSource {
   func load(_ requestType: String, params: RequestParams, pageSize: Int, currentPage: Int, convert: Bool=true) throws -> [Any] {
     var result: [Any] = []
 
-    let selectedItem = params.selectedItem
+    let selectedItem = params["selectedItem"] as? MediaItem
 
     let request = requestType
 
     switch request {
       case "Bookmarks":
-        if let bookmarks = params.bookmarks {
+        if let bookmarks = params["bookmarks"] as? Bookmarks {
           bookmarks.load()
           result = bookmarks.getBookmarks(pageSize: 60, page: currentPage)
         }
 
       case "History":
-        if let history = params.history {
+        if let history = params["history"] as? History {
           history.load()
           result = history.getHistoryItems(pageSize: 60, page: currentPage)
         }
@@ -30,7 +30,7 @@ class AudioBooDataSource: DataSource {
          result = try service.getLetters()
 
       case "Authors Letter Groups":
-        if let path = params.identifier {
+        if let path = params["identifier"] as? String {
           let authors = try service.getAuthorsByLetter(path)
 
           for (key, value) in authors {
@@ -68,7 +68,7 @@ class AudioBooDataSource: DataSource {
         result = try service.getBooks(path!)
 
       case "Tracks":
-        let version = params.version ?? 0
+        let version = params["version"] as? Int ?? 0
         let playlistUrls = try service.getPlaylistUrls(selectedItem!.id!)
 
         let url = playlistUrls[version] as! String
@@ -76,7 +76,7 @@ class AudioBooDataSource: DataSource {
         result = try service.getAudioTracks(url)
 
       case "Search":
-        if let identifier = params.identifier {
+        if let identifier = params["identifier"] as? String {
           if !identifier.isEmpty {
             result = try service.search(identifier, page: currentPage)
           }

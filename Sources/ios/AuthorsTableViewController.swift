@@ -34,8 +34,8 @@ class AuthorsTableViewController: BaseTableViewController {
 
             let adapter = AudioBooServiceAdapter(mobile: true)
 
-            adapter.params.requestType = "Author"
-            adapter.params.selectedItem = getItem(for: view)
+            adapter.params["requestType"] = "Author"
+            adapter.params["selectedItem"] = getItem(for: view)
 
             destination.adapter = adapter
           }
