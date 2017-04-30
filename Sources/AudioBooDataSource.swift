@@ -17,13 +17,13 @@ class AudioBooDataSource: DataSource {
       case "Bookmarks":
         if let bookmarks = params.bookmarks {
           bookmarks.load()
-          result = bookmarks.getBookmarks(pageSize: pageSize, page: currentPage)
+          result = bookmarks.getBookmarks(pageSize: 60, page: currentPage)
         }
 
       case "History":
         if let history = params.history {
           history.load()
-          result = history.getHistoryItems(pageSize: pageSize, page: currentPage)
+          result = history.getHistoryItems(pageSize: 60, page: currentPage)
         }
 
       case "Authors Letters":

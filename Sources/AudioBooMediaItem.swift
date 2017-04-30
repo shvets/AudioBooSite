@@ -38,8 +38,6 @@ class AudioBooMediaItem: MediaItem {
       print("Error getting urls playlist")
     }
 
-    print(playlistUrls)
-
     return playlistUrls.count > 1
   }
 
