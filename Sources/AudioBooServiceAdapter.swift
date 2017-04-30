@@ -15,8 +15,8 @@ class AudioBooServiceAdapter: ServiceAdapter {
   lazy var bookmarks = Bookmarks(bookmarksFileName)
   lazy var history = History(historyFileName)
 
-  public override init(mobile: Bool=false) {
-    super.init(mobile: mobile)
+  public init(mobile: Bool=false) {
+    super.init(dataSource: AudioBooDataSource(), mobile: mobile)
 
     bookmarks.load()
     history.load()
@@ -24,8 +24,6 @@ class AudioBooServiceAdapter: ServiceAdapter {
     pageLoader.load = {
       return try self.load()
     }
-
-    dataSource = AudioBooDataSource()
   }
 
   override open func clone() -> ServiceAdapter {
