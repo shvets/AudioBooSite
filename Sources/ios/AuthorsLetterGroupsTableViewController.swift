@@ -17,6 +17,12 @@ class AuthorsLetterGroupsTableViewController: BaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
+    title = localizer.localize("Range")
+
+    tableView?.backgroundView = activityIndicatorView
+
+    adapter.pageLoader.spinner = PlainSpinner(activityIndicatorView)
+
     loadInitialData()
   }
 

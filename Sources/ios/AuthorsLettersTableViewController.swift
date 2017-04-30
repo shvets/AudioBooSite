@@ -15,6 +15,12 @@ class AuthorsLettersTableViewController: BaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
+    title = localizer.localize("Letters")
+
+    tableView?.backgroundView = activityIndicatorView
+
+    adapter.pageLoader.spinner = PlainSpinner(activityIndicatorView)
+
     loadInitialData()
   }
 

@@ -21,9 +21,6 @@ class AudioBooServiceAdapter: ServiceAdapter {
     bookmarks.load()
     history.load()
 
-    pageLoader.pageSize = 12
-    pageLoader.rowSize = 6
-
     pageLoader.load = {
       return try self.load()
     }
@@ -43,13 +40,12 @@ class AudioBooServiceAdapter: ServiceAdapter {
     var params = RequestParams()
 
     params.identifier = requestType == "Search" ? query : parentId
-    //params.version = version
     params.bookmarks = bookmarks
     params.history = history
     params.selectedItem = selectedItem
 
     if let requestType = requestType, let dataSource = dataSource {
-      return try dataSource.load(requestType, params: params, pageSize: pageLoader.pageSize!,
+      return try dataSource.load(requestType, params: params, pageSize: pageLoader.pageSize,
         currentPage: pageLoader.currentPage, convert: true)
     }
     else {

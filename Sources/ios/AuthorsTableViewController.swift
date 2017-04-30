@@ -12,6 +12,12 @@ class AuthorsTableViewController: BaseTableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
+    title = localizer.localize("Authors")
+
+    tableView?.backgroundView = activityIndicatorView
+
+    adapter.pageLoader.spinner = PlainSpinner(activityIndicatorView)
+
     loadInitialData()
   }
 
