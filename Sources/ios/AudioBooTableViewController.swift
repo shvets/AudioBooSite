@@ -53,7 +53,7 @@ open class AudioBooTableViewController: BaseTableViewController {
           if let destination = segue.destination.getActionController() as? AuthorsLettersTableViewController {
             let adapter = AudioBooServiceAdapter(mobile: true)
 
-            adapter.requestType = "Authors Letters"
+            adapter.params.requestType = "Authors Letters"
             destination.adapter = adapter
           }
 
@@ -65,8 +65,8 @@ open class AudioBooTableViewController: BaseTableViewController {
 
             let adapter = AudioBooServiceAdapter(mobile: true)
 
-            adapter.requestType = mediaItem.name
-            adapter.parentName = localizer.localize(mediaItem.name!)
+            adapter.params.requestType = mediaItem.name
+            adapter.params.parentName = localizer.localize(mediaItem.name!)
 
             destination.adapter = adapter
           }
@@ -76,8 +76,8 @@ open class AudioBooTableViewController: BaseTableViewController {
 
             let adapter = AudioBooServiceAdapter(mobile: true)
 
-            adapter.requestType = "Search"
-            adapter.parentName = localizer.localize("Search Results")
+            adapter.params.requestType = "Search"
+            adapter.params.parentName = localizer.localize("Search Results")
 
             destination.adapter = adapter
           }

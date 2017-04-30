@@ -87,11 +87,11 @@ open class SearchTableController: UIViewController, UITextFieldDelegate {
           if isChecked {
             let transcoded = LatToRusConverter().transliterate(query.text!)
 
-            adapter.query = transcoded
+            adapter.params.query = transcoded
             transcodedQuery.text = transcoded
           }
           else {
-            adapter.query = query.text
+            adapter.params.query = query.text
           }
 
           destination.adapter = adapter

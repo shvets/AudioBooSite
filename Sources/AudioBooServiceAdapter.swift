@@ -35,15 +35,15 @@ class AudioBooServiceAdapter: ServiceAdapter {
   }
 
   override func load() throws -> [Any] {
-    var params = RequestParams()
+    var newParams = RequestParams()
 
-    params.identifier = requestType == "Search" ? query : parentId
-    params.bookmarks = bookmarks
-    params.history = history
-    params.selectedItem = selectedItem
+    newParams.identifier = params.requestType == "Search" ? params.query : params.parentId
+    newParams.bookmarks = bookmarks
+    newParams.history = history
+    newParams.selectedItem = params.selectedItem
 
-    if let requestType = requestType, let dataSource = dataSource {
-      return try dataSource.load(requestType, params: params, pageSize: pageLoader.pageSize,
+    if let requestType = params.requestType, let dataSource = dataSource {
+      return try dataSource.load(requestType, params: newParams, pageSize: pageLoader.pageSize,
         currentPage: pageLoader.currentPage, convert: true)
     }
     else {

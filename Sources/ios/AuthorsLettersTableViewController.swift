@@ -40,8 +40,8 @@ class AuthorsLettersTableViewController: BaseTableViewController {
             let mediaItem = getItem(for: view)
 
             let adapter = AudioBooServiceAdapter(mobile: true)
-            adapter.requestType = "Authors Letter Groups"
-            adapter.parentId = mediaItem.id
+            adapter.params.requestType = "Authors Letter Groups"
+            adapter.params.parentId = mediaItem.id
             destination.adapter = adapter
           }
 
