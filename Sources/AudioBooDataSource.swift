@@ -6,12 +6,12 @@ import Wrap
 class AudioBooDataSource: DataSource {
   let service = AudioBooService.shared
 
-  override open func load(_ requestType: String, params: RequestParams, pageSize: Int, currentPage: Int, convert: Bool=true) throws -> [Any] {
+  override open func load(pageSize: Int, currentPage: Int, convert: Bool=true) throws -> [Any] {
     var result: [Any] = []
 
     let selectedItem = params["selectedItem"] as? MediaItem
 
-    let request = requestType
+    let request = params["requestType"] as! String
 
     switch request {
       case "Bookmarks":
