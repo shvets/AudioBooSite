@@ -32,7 +32,7 @@ class AudioBooDataSource: DataSource {
          result = try service.getLetters()
 
       case "Authors Letter Groups":
-        if let path = params["identifier"] as? String {
+        if let path = params["parentId"] as? String {
           let authors = try service.getAuthorsByLetter(path)
 
           for (key, value) in authors {
@@ -78,9 +78,9 @@ class AudioBooDataSource: DataSource {
         result = try service.getAudioTracks(url)
 
       case "Search":
-        if let identifier = params["identifier"] as? String {
-          if !identifier.isEmpty {
-            result = try service.search(identifier, page: currentPage!)
+        if let query = params["query"] as? String {
+          if !query.isEmpty {
+            result = try service.search(query, page: currentPage!)
           }
           else {
             result = []

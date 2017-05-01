@@ -35,11 +35,6 @@ class AudioBooServiceAdapter: ServiceAdapter {
   }
 
   override open func load() throws -> [Any] {
-    let requestType = params["requestType"] as? String
-    let query = params["query"] as? String
-    let parentId = params["parentId"] as? String
-
-    params["identifier"] = requestType == "Search" ? query : parentId
     params["bookmarks"] = bookmarks
     params["history"] = history
 
