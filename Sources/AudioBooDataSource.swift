@@ -6,24 +6,26 @@ import Wrap
 class AudioBooDataSource: DataSource {
   let service = AudioBooService.shared
 
-  override open func load(pageSize: Int, currentPage: Int, convert: Bool=true) throws -> [Any] {
+  override open func load(convert: Bool=true) throws -> [Any] {
     var result: [Any] = []
 
     let selectedItem = params["selectedItem"] as? MediaItem
 
     let request = params["requestType"] as! String
+    //let pageSize = params["pageSize"] as? Int
+    let currentPage = params["currentPage"] as? Int
 
     switch request {
       case "Bookmarks":
         if let bookmarks = params["bookmarks"] as? Bookmarks {
           bookmarks.load()
-          result = bookmarks.getBookmarks(pageSize: 60, page: currentPage)
+          result = bookmarks.getBookmarks(pageSize: 60, page: currentPage!)
         }
 
       case "History":
         if let history = params["history"] as? History {
           history.load()
-          result = history.getHistoryItems(pageSize: 60, page: currentPage)
+          result = history.getHistoryItems(pageSize: 60, page: currentPage!)
         }
 
       case "Authors Letters":
@@ -78,7 +80,7 @@ class AudioBooDataSource: DataSource {
       case "Search":
         if let identifier = params["identifier"] as? String {
           if !identifier.isEmpty {
-            result = try service.search(identifier, page: currentPage)
+            result = try service.search(identifier, page: currentPage!)
           }
           else {
             result = []
