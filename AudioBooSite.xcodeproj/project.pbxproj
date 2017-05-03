@@ -13,7 +13,6 @@
 		D56A71F6EEA5127F3A9D0FBE /* AuthorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A721164FE49A67344A7A5 /* AuthorsTableViewController.swift */; };
 		D56A71FE782D975C8C96CE1E /* AudioBooDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A7D46B94A2874BCA014FB /* AudioBooDataSource.swift */; };
 		D56A73233333D3D01AC138B2 /* AudioBooMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A755620C582988CB45960 /* AudioBooMediaItem.swift */; };
-		D56A77E7479648C4859E36A3 /* SearchTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A7F7114716CEDD23412DB /* SearchTableController.swift */; };
 		D56A78A8BD954C5C9402AFF9 /* AudioBooTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A7A7FDE5BC17626514829 /* AudioBooTableViewController.swift */; };
 		D56A78DDD98C771228830693 /* AudioBooServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A7A879EED3E022AE748B8 /* AudioBooServiceAdapter.swift */; };
 		D56A78E3353E302476E5F97E /* AuthorsLetterGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A7E93893D75B71CBF5D09 /* AuthorsLetterGroupsTableViewController.swift */; };
@@ -55,7 +54,6 @@
 		D56A7A879EED3E022AE748B8 /* AudioBooServiceAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBooServiceAdapter.swift; sourceTree = "<group>"; };
 		D56A7D46B94A2874BCA014FB /* AudioBooDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBooDataSource.swift; sourceTree = "<group>"; };
 		D56A7E93893D75B71CBF5D09 /* AuthorsLetterGroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorsLetterGroupsTableViewController.swift; sourceTree = "<group>"; };
-		D56A7F7114716CEDD23412DB /* SearchTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableController.swift; sourceTree = "<group>"; };
 		FA6C122F1EAED8F500DA4A90 /* Just.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Just.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/EtvnetApp-auvgeykttffxrlaelzqpbfeqnwis/Build/Products/Debug-iphoneos/Just.framework"; sourceTree = "<group>"; };
 		FA6C12301EAED8F500DA4A90 /* Runglish.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Runglish.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/EtvnetApp-auvgeykttffxrlaelzqpbfeqnwis/Build/Products/Debug-appletvos/Runglish.framework"; sourceTree = "<group>"; };
 		FA6C12311EAED8F500DA4A90 /* SwiftSoup.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSoup.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/EtvnetApp-auvgeykttffxrlaelzqpbfeqnwis/Build/Products/Debug-iphoneos/SwiftSoup.framework"; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 				D56A7E93893D75B71CBF5D09 /* AuthorsLetterGroupsTableViewController.swift */,
 				D56A711BC6FBB3D5C367F8C3 /* AuthorsLettersTableViewController.swift */,
 				D56A721164FE49A67344A7A5 /* AuthorsTableViewController.swift */,
-				D56A7F7114716CEDD23412DB /* SearchTableController.swift */,
 				D56A75C93A274283C4FDBF8F /* SettingsTableController.swift */,
 			);
 			path = ios;
@@ -302,7 +299,6 @@
 				D56A78E3353E302476E5F97E /* AuthorsLetterGroupsTableViewController.swift in Sources */,
 				D56A7D121313058FDE6A6FDE /* AuthorsLettersTableViewController.swift in Sources */,
 				D56A71F6EEA5127F3A9D0FBE /* AuthorsTableViewController.swift in Sources */,
-				D56A77E7479648C4859E36A3 /* SearchTableController.swift in Sources */,
 				D56A78FA86458CE09235C8BB /* SettingsTableController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
