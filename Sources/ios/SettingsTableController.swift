@@ -41,11 +41,11 @@ class SettingsTableController: BaseTableViewController {
 
   func buildResetHistoryController() -> UIAlertController {
     let title = localizer.localize("History Will Be Reset")
-    let message = localizer.localize("Please Confirm Your Choice")
+    let message = localizer.localize("Please Confir_m Your Choice")
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-    let okAction = UIAlertAction(title: "OK", style: .default) {
+    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
       let history = (self.adapter as! AudioBooServiceAdapter).history
 
       history.clear()
@@ -66,7 +66,7 @@ class SettingsTableController: BaseTableViewController {
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-    let okAction = UIAlertAction(title: "OK", style: .default) {
+    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
       let bookmarks = (self.adapter as! AudioBooServiceAdapter).bookmarks
 
       bookmarks.clear()
