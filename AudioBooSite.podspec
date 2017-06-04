@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AudioBooSite"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "Framework for playing media from AudioBoo.Ru"
   s.description  = "Framework for playing media from AudioBoo.Ru."
 
