@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2DBA15FB9C9B9AEDF5FFF9D5 /* AudioBooSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA13D0DFD60B444E9FB672 /* AudioBooSite.swift */; };
+		2DBA1E3F26FD7920D31CC03F /* AudioBooBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA150BF2FF8178F8F96DAC /* AudioBooBaseTableViewController.swift */; };
 		36F91E4A1EA6BE09007E152D /* AudioBooSite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36F91E401EA6BE09007E152D /* AudioBooSite.framework */; };
 		36F91E4F1EA6BE09007E152D /* AudioBooSiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F91E4E1EA6BE09007E152D /* AudioBooSiteTests.swift */; };
 		36F91E511EA6BE09007E152D /* AudioBooSite.h in Headers */ = {isa = PBXBuildFile; fileRef = 36F91E431EA6BE09007E152D /* AudioBooSite.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		2DBA13D0DFD60B444E9FB672 /* AudioBooSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBooSite.swift; sourceTree = "<group>"; };
+		2DBA150BF2FF8178F8F96DAC /* AudioBooBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBooBaseTableViewController.swift; sourceTree = "<group>"; };
 		36F91E401EA6BE09007E152D /* AudioBooSite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AudioBooSite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36F91E431EA6BE09007E152D /* AudioBooSite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioBooSite.h; sourceTree = "<group>"; };
 		36F91E441EA6BE09007E152D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				D56A711BC6FBB3D5C367F8C3 /* AuthorsLettersTableViewController.swift */,
 				D56A721164FE49A67344A7A5 /* AuthorsTableViewController.swift */,
 				D56A75C93A274283C4FDBF8F /* SettingsTableController.swift */,
+				2DBA150BF2FF8178F8F96DAC /* AudioBooBaseTableViewController.swift */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				D56A71F6EEA5127F3A9D0FBE /* AuthorsTableViewController.swift in Sources */,
 				D56A78FA86458CE09235C8BB /* SettingsTableController.swift in Sources */,
 				2DBA15FB9C9B9AEDF5FFF9D5 /* AudioBooSite.swift in Sources */,
+				2DBA1E3F26FD7920D31CC03F /* AudioBooBaseTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

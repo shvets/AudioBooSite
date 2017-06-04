@@ -1,7 +1,7 @@
 import UIKit
 import TVSetKit
 
-class SettingsTableController: BaseTableViewController {
+class SettingsTableController: AudioBooBaseTableViewController {
   static let SegueIdentifier = "Settings"
 
   override open var CellIdentifier: String { return "SettingTableCell" }
