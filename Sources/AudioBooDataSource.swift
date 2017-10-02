@@ -1,12 +1,14 @@
 import SwiftyJSON
 import WebAPI
 import TVSetKit
+import AudioPlayer
 
 class AudioBooDataSource: DataSource {
   let service = AudioBooService.shared
 
   override open func load(params: Parameters) throws -> [Any] {
     var result: [Any] = []
+    var tracks = false
 
     let selectedItem = params["selectedItem"] as? MediaItem
 
@@ -15,104 +17,115 @@ class AudioBooDataSource: DataSource {
     let currentPage = params["currentPage"] as? Int
 
     switch request {
-      case "Bookmarks":
-        if let bookmarks = params["bookmarks"] as? Bookmarks {
-          bookmarks.load()
-          result = bookmarks.getBookmarks(pageSize: 60, page: currentPage!)
-        }
+    case "Bookmarks":
+      if let bookmarks = params["bookmarks"] as? Bookmarks {
+        bookmarks.load()
+        result = bookmarks.getBookmarks(pageSize: 60, page: currentPage!)
+      }
 
-      case "History":
-        if let history = params["history"] as? History {
-          history.load()
-          result = history.getHistoryItems(pageSize: 60, page: currentPage!)
-        }
+    case "History":
+      if let history = params["history"] as? History {
+        history.load()
+        result = history.getHistoryItems(pageSize: 60, page: currentPage!)
+      }
 
-      case "Authors Letters":
-         result = try service.getLetters()
+    case "Authors Letters":
+      result = try service.getLetters()
 
-      case "Authors Letter Groups":
-        if let path = params["parentId"] as? String {
-          let authors = try service.getAuthorsByLetter(path)
+    case "Authors Letter Groups":
+      if let path = params["parentId"] as? String {
+        let authors = try service.getAuthorsByLetter(path)
 
-          for (key, value) in authors {
-            let group = value as! [NameClassifier.Item]
+        for (key, value) in authors {
+          let group = value as! [NameClassifier.Item]
 
-            var newGroup: [[String: String]] = []
+          var newGroup: [[String: String]] = []
 
-            for el in group {
-              newGroup.append(["id": el.id, "name": el.name])
-            }
-
-            result.append(["name": key, "items": newGroup])
+          for el in group {
+            newGroup.append(["id": el.id, "name": el.name])
           }
+
+          result.append(["name": key, "items": newGroup])
         }
+      }
 
-      case "Authors":
-        result = (selectedItem as! AudioBooMediaItem).items
+    case "Authors":
+      result = (selectedItem as! AudioBooMediaItem).items
 
-      case "Versions":
-        let path = selectedItem!.id
+    case "Versions":
+      let path = selectedItem!.id
 
-        let playlistUrls = try service.getPlaylistUrls(path!)
+      let playlistUrls = try service.getPlaylistUrls(path!)
 
-        var list = [[String: String]]()
+      var list = [[String: String]]()
 
-        for (index, url) in playlistUrls.enumerated() {
-          list.append(["name": "Version \(index+1)", "id": url as! String])
+      for (index, url) in playlistUrls.enumerated() {
+        list.append(["name": "Version \(index+1)", "id": url as! String])
+      }
+
+      result = list
+
+    case "Author":
+      let path = selectedItem!.id
+
+      result = try service.getBooks(path!)
+
+    case "Tracks":
+      let version = params["version"] as? Int ?? 0
+      let playlistUrls = try service.getPlaylistUrls(selectedItem!.id!)
+
+      let url = playlistUrls[version] as! String
+
+      tracks = true
+
+      result = try service.getAudioTracks(url)
+
+    case "Search":
+      if let query = params["query"] as? String {
+        if !query.isEmpty {
+          result = try service.search(query, page: currentPage!)
         }
-
-        result = list
-
-      case "Author":
-        let path = selectedItem!.id
-
-        result = try service.getBooks(path!)
-
-      case "Tracks":
-        let version = params["version"] as? Int ?? 0
-        let playlistUrls = try service.getPlaylistUrls(selectedItem!.id!)
-
-        let url = playlistUrls[version] as! String
-
-        result = try service.getAudioTracks(url)
-
-      case "Search":
-        if let query = params["query"] as? String {
-          if !query.isEmpty {
-            result = try service.search(query, page: currentPage!)
-          }
-          else {
-            result = []
-          }
+        else {
+          result = []
         }
+      }
 
-      default:
-        result = []
+    default:
+      result = []
     }
 
     let convert = params["convert"] as? Bool ?? true
 
-    if convert {
+    if convert || tracks {
       return convertToMediaItems(result)
     }
     else {
-      return result
+      return result as! [Any]
     }
   }
 
-  func convertToMediaItems(_ items: [Any]) -> [MediaItem] {
-    var newItems = [MediaItem]()
+  func convertToMediaItems(_ items: Any) -> [Any] {
+    var newItems = [Any]()
 
-    for item in items {
-      var jsonItem = item as? JSON
+    if let tracks = items as? [BooTrack] {
+      for track in tracks {
+        var item = AudioItem(name: track.title + ".mp3", id: track.url)
 
-      if jsonItem == nil {
-        jsonItem = JSON(item)
+        newItems += [item]
       }
+    }
+    else if let items = items as? [Any] {
+      for item in items {
+        var jsonItem = item as? JSON
 
-      let movie = AudioBooMediaItem(data: jsonItem!)
+        if jsonItem == nil {
+          jsonItem = JSON(item)
+        }
 
-      newItems += [movie]
+        let movie = AudioBooMediaItem(data: jsonItem!)
+
+        newItems += [movie]
+      }
     }
 
     return newItems
