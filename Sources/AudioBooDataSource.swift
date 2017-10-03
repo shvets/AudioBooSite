@@ -100,7 +100,7 @@ class AudioBooDataSource: DataSource {
       return convertToMediaItems(result)
     }
     else {
-      return result as! [Any]
+        return result 
     }
   }
 
@@ -109,7 +109,7 @@ class AudioBooDataSource: DataSource {
 
     if let tracks = items as? [BooTrack] {
       for track in tracks {
-        var item = AudioItem(name: track.title + ".mp3", id: track.url)
+        let item = AudioItem(name: track.title + ".mp3", id: track.url)
 
         newItems += [item]
       }
