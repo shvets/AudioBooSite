@@ -20,6 +20,10 @@ class AudioBooMediaItem: MediaItem {
     }
   }
   
+  required convenience init(from decoder: Decoder) throws {
+    fatalError("init(from:) has not been implemented")
+  }
+  
   override func isContainer() -> Bool {
     return type == "book" || type == "tracks"
   }
