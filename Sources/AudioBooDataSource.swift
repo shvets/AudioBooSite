@@ -74,11 +74,13 @@ class AudioBooDataSource: DataSource {
       let version = params["version"] as? Int ?? 0
       let playlistUrls = try service.getPlaylistUrls(selectedItem!.id!)
 
-      let url = playlistUrls[version] as! String
-
-      tracks = true
-
-      result = try service.getAudioTracks(url)
+      if playlistUrls.count < version {
+        let url = playlistUrls[version] as! String
+        
+        tracks = true
+        
+        result = try service.getAudioTracks(url)
+      }
 
     case "Search":
       if let query = params["query"] as? String {
