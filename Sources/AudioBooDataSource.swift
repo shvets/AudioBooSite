@@ -60,7 +60,7 @@ class AudioBooDataSource: DataSource {
       var list = [[String: String]]()
 
       for (index, url) in playlistUrls.enumerated() {
-        list.append(["name": "Version \(index+1)", "id": url as! String])
+        list.append(["name": "Version \(index+1)", "id": url])
       }
 
       result = list
@@ -74,8 +74,8 @@ class AudioBooDataSource: DataSource {
       let version = params["version"] as? Int ?? 0
       let playlistUrls = try service.getPlaylistUrls(selectedItem!.id!)
 
-      if playlistUrls.count < version {
-        let url = playlistUrls[version] as! String
+      if playlistUrls.count > version {
+        let url = playlistUrls[version]
         
         tracks = true
         
@@ -109,7 +109,7 @@ class AudioBooDataSource: DataSource {
   func convertToMediaItems(_ items: Any) -> [Any] {
     var newItems = [Any]()
 
-    if let tracks = items as? [BooTrack] {
+    if let tracks = items as? [AudioBooAPI.BooTrack] {
       for track in tracks {
         let item = AudioItem(name: track.title + ".mp3", id: track.url)
 
