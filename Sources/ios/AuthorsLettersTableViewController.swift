@@ -1,5 +1,4 @@
 import UIKit
-import SwiftyJSON
 import SwiftSoup
 import WebAPI
 import TVSetKit

@@ -1,25 +1,12 @@
 import UIKit
-import SwiftyJSON
 import WebAPI
 import TVSetKit
 
 class AudioBooMediaItem: MediaItem {
   let service = AudioBooService.shared
 
-  var items = [JSON]()
+  var items = [AudioBooAPI.PersonName]()
 
-  override init(data: JSON) {
-    super.init(data: data)
-
-    self.items = []
-
-    let items = data["items"].arrayValue
-
-    for item in items {
-      self.items.append(item)
-    }
-  }
-  
   required convenience init(from decoder: Decoder) throws {
     fatalError("init(from:) has not been implemented")
   }

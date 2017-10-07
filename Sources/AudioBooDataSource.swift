@@ -1,4 +1,3 @@
-import SwiftyJSON
 import WebAPI
 import TVSetKit
 import AudioPlayer
@@ -116,15 +115,42 @@ class AudioBooDataSource: DataSource {
         newItems += [item]
       }
     }
-    else if let items = items as? [Any] {
+    else if let items = items as? [[String: Any]] {
       for item in items {
-        var jsonItem = item as? JSON
+        let movie = AudioBooMediaItem(data: ["name": ""])
 
-        if jsonItem == nil {
-          jsonItem = JSON(item)
+        if let dict = item as? [String: String] {
+          movie.name = dict["name"]
+          movie.id = dict["id"]
+          movie.description = dict["description"]
+          movie.thumb = dict["thumb"]
+          movie.type = dict["type"]
+        }
+        else {
+          movie.name = item["name"] as? String
+
+          if let array = item["items"] as? [[String: String]] {
+            var newArray = [AudioBooAPI.PersonName]()
+
+            for elem in array {
+              let newElem = AudioBooAPI.PersonName(name: elem["name"]!, id: elem["id"]!)
+
+              newArray.append(newElem)
+            }
+
+            movie.items = newArray
+          }
         }
 
-        let movie = AudioBooMediaItem(data: jsonItem!)
+        newItems += [movie]
+      }
+    }
+    else if let items = items as? [AudioBooAPI.PersonName] {
+      for item in items {
+        let movie = AudioBooMediaItem(data: ["name": ""])
+
+        movie.name = item.name
+        movie.id = item.id
 
         newItems += [movie]
       }
