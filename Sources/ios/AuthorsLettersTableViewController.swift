@@ -36,7 +36,7 @@ class AuthorsLettersTableViewController: AudioBooBaseTableViewController {
           if let destination = segue.destination as? AuthorsLetterGroupsTableViewController,
              let view = sender as? MediaNameTableCell {
 
-            let mediaItem = getItem(for: view) as! MediaItem
+            let mediaItem = getItem(for: view)
 
             let adapter = AudioBooServiceAdapter(mobile: true)
             adapter.params["requestType"] = "Authors Letter Groups"

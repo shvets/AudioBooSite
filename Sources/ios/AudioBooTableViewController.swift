@@ -28,7 +28,7 @@ open class AudioBooTableViewController: AudioBooBaseTableViewController {
   }
 
   override open func navigate(from view: UITableViewCell) {
-    let mediaItem = getItem(for: view) as! MediaItem
+    let mediaItem = getItem(for: view)
 
     switch mediaItem.name! {
       case "Authors":
@@ -60,7 +60,7 @@ open class AudioBooTableViewController: AudioBooBaseTableViewController {
           if let destination = segue.destination.getActionController() as? MediaItemsController,
              let view = sender as? MediaNameTableCell {
 
-            let mediaItem = getItem(for: view) as! MediaItem
+            let mediaItem = getItem(for: view)
 
             let adapter = AudioBooServiceAdapter(mobile: true)
 

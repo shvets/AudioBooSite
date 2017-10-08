@@ -27,7 +27,7 @@ class SettingsTableController: AudioBooBaseTableViewController {
   }
 
   override open func navigate(from view: UITableViewCell) {
-    let mediaItem = getItem(for: view) as! MediaItem
+    let mediaItem = getItem(for: view)
 
     let settingsMode = mediaItem.name
 
