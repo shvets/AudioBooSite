@@ -20,11 +20,11 @@ open class AudioBooTableViewController: AudioBooBaseTableViewController {
   }
 
   func loadData() {
-    items.append(MediaItem(name: "Bookmarks", imageName: "Star"))
-    items.append(MediaItem(name: "History", imageName: "Bookmark"))
-    items.append(MediaItem(name: "Authors", imageName: "Mark Twain"))
-    items.append(MediaItem(name: "Settings", imageName: "Engineering"))
-    items.append(MediaItem(name: "Search", imageName: "Search"))
+    items.append(MediaName(name: "Bookmarks", imageName: "Star"))
+    items.append(MediaName(name: "History", imageName: "Bookmark"))
+    items.append(MediaName(name: "Authors", imageName: "Mark Twain"))
+    items.append(MediaName(name: "Settings", imageName: "Engineering"))
+    items.append(MediaName(name: "Search", imageName: "Search"))
   }
 
   override open func navigate(from view: UITableViewCell) {

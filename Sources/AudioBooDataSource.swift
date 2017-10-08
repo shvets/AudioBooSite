@@ -9,7 +9,7 @@ class AudioBooDataSource: DataSource {
     var result: [Any] = []
     var tracks = false
 
-    let selectedItem = params["selectedItem"] as? MediaItem
+    let selectedItem = params["selectedItem"] as? Item
 
     let request = params["requestType"] as! String
     //let pageSize = params["pageSize"] as? Int
@@ -49,36 +49,42 @@ class AudioBooDataSource: DataSource {
       }
 
     case "Authors":
-      result = (selectedItem as! AudioBooMediaItem).items
-
-    case "Versions":
-      let path = selectedItem!.id
-
-      let playlistUrls = try service.getPlaylistUrls(path!)
-
-      var list = [[String: String]]()
-
-      for (index, url) in playlistUrls.enumerated() {
-        list.append(["name": "Version \(index+1)", "id": url])
+      if let selectedItem = selectedItem as? AudioBooMediaItem {
+        result = selectedItem.items
       }
 
-      result = list
+    case "Versions":
+      if let selectedItem = selectedItem {
+        let path = selectedItem.id
+
+        let playlistUrls = try service.getPlaylistUrls(path!)
+
+        var list = [[String: String]]()
+
+        for (index, url) in playlistUrls.enumerated() {
+          list.append(["name": "Version \(index+1)", "id": url])
+        }
+
+        result = list
+      }
 
     case "Author":
-      let path = selectedItem!.id
-
-      result = try service.getBooks(path!)
+      if let selectedItem = selectedItem {
+        result = try service.getBooks(selectedItem.id!)
+      }
 
     case "Tracks":
-      let version = params["version"] as? Int ?? 0
-      let playlistUrls = try service.getPlaylistUrls(selectedItem!.id!)
+      if let selectedItem = selectedItem {
+        let version = params["version"] as? Int ?? 0
+        let playlistUrls = try service.getPlaylistUrls(selectedItem.id!)
 
-      if playlistUrls.count > version {
-        let url = playlistUrls[version]
-        
-        tracks = true
-        
-        result = try service.getAudioTracks(url)
+        if playlistUrls.count > version {
+          let url = playlistUrls[version]
+
+          tracks = true
+
+          result = try service.getAudioTracks(url)
+        }
       }
 
     case "Search":
