@@ -40,15 +40,15 @@ class AudioBooServiceAdapter: ServiceAdapter {
     return try super.load()
   }
 
-  override func addBookmark(item: Item) -> Bool {
+  override func addBookmark(item: MediaItem) -> Bool {
     return bookmarks.addBookmark(item: item)
   }
 
-  override func removeBookmark(item: Item) -> Bool {
-    return bookmarks.removeBookmark(item: item)
+  override func removeBookmark(item: MediaItem) -> Bool {
+    return bookmarks.removeBookmark(id: item.id!)
   }
 
-  override func addHistoryItem(_ item: Item) {
+  override func addHistoryItem(_ item: MediaItem) {
     history.add(item: item)
   }
 
