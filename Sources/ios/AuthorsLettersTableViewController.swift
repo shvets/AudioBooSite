@@ -3,11 +3,17 @@ import SwiftSoup
 import WebAPI
 import TVSetKit
 
-class AuthorsLettersTableViewController: AudioBooBaseTableViewController {
+class AuthorsLettersTableViewController: UITableViewController {
   static let SegueIdentifier = "Authors Letters"
+  let CellIdentifier = "AuthorsLetterTableCell"
 
-  override open var CellIdentifier: String { return "AuthorsLetterTableCell" }
-  override open var BundleId: String { return AudioBooServiceAdapter.BundleId }
+  let localizer = Localizer(AudioBooServiceAdapter.BundleId, bundleClass: AudioBooSite.self)
+
+#if os(iOS)
+  public let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+#endif
+
+  private var items: Items!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -18,13 +24,45 @@ class AuthorsLettersTableViewController: AudioBooBaseTableViewController {
 
     tableView?.backgroundView = activityIndicatorView
 
-    adapter.pageLoader.spinner = PlainSpinner(activityIndicatorView)
+    items = Items() {
+      let adapter = AudioBooServiceAdapter(mobile: true)
+      adapter.params["requestType"] = "Authors Letters"
 
-    loadInitialData()
+      return try adapter.load()
+    }
+    
+    items.pageLoader.spinner = PlainSpinner(activityIndicatorView)
+
+    items.loadInitialData(tableView)
   }
 
-  override open func navigate(from view: UITableViewCell) {
-    performSegue(withIdentifier: AuthorsLetterGroupsTableViewController.SegueIdentifier, sender: view)
+// MARK: UITableViewDataSource
+
+  override open func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+
+  override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return items.count
+  }
+
+  override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    if let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as? MediaNameTableCell {
+      let item = items[indexPath.row]
+
+      cell.configureCell(item: item, localizedName: localizer.getLocalizedName(item.name))
+
+      return cell
+    }
+    else {
+      return UITableViewCell()
+    }
+  }
+
+  override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let view = tableView.cellForRow(at: indexPath) {
+      performSegue(withIdentifier: AuthorsLetterGroupsTableViewController.SegueIdentifier, sender: view)
+    }
   }
 
   // MARK: - Navigation
@@ -34,14 +72,12 @@ class AuthorsLettersTableViewController: AudioBooBaseTableViewController {
       switch identifier {
         case AuthorsLetterGroupsTableViewController.SegueIdentifier:
           if let destination = segue.destination as? AuthorsLetterGroupsTableViewController,
-             let view = sender as? MediaNameTableCell {
+             let view = sender as? MediaNameTableCell,
+             let indexPath = tableView.indexPath(for: view) {
 
-            let mediaItem = getItem(for: view)
+            let mediaItem = items.getItem(for: indexPath)
 
-            let adapter = AudioBooServiceAdapter(mobile: true)
-            adapter.params["requestType"] = "Authors Letter Groups"
-            adapter.params["parentId"] = mediaItem.id
-            destination.adapter = adapter
+            destination.parentId =  mediaItem.id
           }
 
         default: break
