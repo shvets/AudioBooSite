@@ -1,6 +1,4 @@
 import UIKit
-import SwiftSoup
-import WebAPI
 import TVSetKit
 
 class AuthorsLetterGroupsTableViewController: UITableViewController {
@@ -26,8 +24,6 @@ class AuthorsLetterGroupsTableViewController: UITableViewController {
 
     title = localizer.localize("Range")
 
-    tableView?.backgroundView = activityIndicatorView
-
     items = Items() {
       let adapter = AudioBooServiceAdapter(mobile: true)
       adapter.params["requestType"] = "Authors Letter Groups"
@@ -35,7 +31,8 @@ class AuthorsLetterGroupsTableViewController: UITableViewController {
       
       return try adapter.load()
     }
-
+    
+    tableView?.backgroundView = activityIndicatorView
     items.pageLoader.spinner = PlainSpinner(activityIndicatorView)
 
     items.loadInitialData(tableView)

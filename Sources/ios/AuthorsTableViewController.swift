@@ -22,8 +22,6 @@ class AuthorsTableViewController: UITableViewController {
 
     title = localizer.localize("Authors")
 
-    tableView?.backgroundView = activityIndicatorView
-
     items = Items() {
       let adapter = AudioBooServiceAdapter(mobile: true)
       adapter.params["requestType"] = "Authors"
@@ -32,6 +30,7 @@ class AuthorsTableViewController: UITableViewController {
       return try adapter.load()
     }
 
+    tableView?.backgroundView = activityIndicatorView
     items.pageLoader.spinner = PlainSpinner(activityIndicatorView)
 
     items.loadInitialData(tableView)
