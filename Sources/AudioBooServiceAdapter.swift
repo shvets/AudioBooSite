@@ -40,12 +40,10 @@ class AudioBooServiceAdapter: ServiceAdapter {
     return try super.load()
   }
 
-  func getConfiguration() -> Configuration {
-    let conf = Configuration()
-
-    conf.pageSize = 12
-    conf.rowSize = 1
-
-    return conf
+  func getConfiguration() -> [String: Any] {
+    return [
+      "pageSize": 12,
+      "rowSize": 1
+    ]
   }
 }
