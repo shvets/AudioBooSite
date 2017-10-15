@@ -93,6 +93,7 @@ open class AudioBooTableViewController: UITableViewController {
             adapter.params["parentName"] = localizer.localize(mediaItem.name!)
 
             destination.adapter = adapter
+            destination.configuration = adapter.getConfiguration()
           }
 
         case SearchTableController.SegueIdentifier:

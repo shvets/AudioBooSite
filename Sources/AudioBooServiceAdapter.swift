@@ -52,4 +52,12 @@ class AudioBooServiceAdapter: ServiceAdapter {
     history.add(item: item)
   }
 
+  func getConfiguration() -> Configuration {
+    var conf = Configuration()
+
+    conf.pageSize = 12
+    conf.rowSize = 1
+
+    return conf
+  }
 }
