@@ -11,14 +11,20 @@ class AudioBooServiceAdapter: ServiceAdapter {
   override open class var StoryboardId: String { return "AudioBoo" }
   override open class var BundleId: String { return "com.rubikon.AudioBooSite" }
 
-    lazy var bookmarks = Bookmarks(AudioBooServiceAdapter.bookmarksFileName)
-    lazy var history = History(AudioBooServiceAdapter.historyFileName)
+  lazy var bookmarks = Bookmarks(AudioBooServiceAdapter.bookmarksFileName)
+  lazy var history = History(AudioBooServiceAdapter.historyFileName)
+
+  var bookmarksManager: BookmarksManager?
+  var historyManager: HistoryManager?
 
   public init(mobile: Bool=false) {
     super.init(dataSource: AudioBooDataSource(), mobile: mobile)
 
     bookmarks.load()
     history.load()
+
+    bookmarksManager = BookmarksManager(bookmarks)
+    historyManager = HistoryManager(history)
 
     pageLoader.load = {
       return try self.load()
@@ -43,7 +49,9 @@ class AudioBooServiceAdapter: ServiceAdapter {
   func getConfiguration() -> [String: Any] {
     return [
       "pageSize": 12,
-      "rowSize": 1
+      "rowSize": 1,
+      "bookmarksManager": bookmarksManager as Any,
+      "historyManager": historyManager as Any
     ]
   }
 }

@@ -69,7 +69,7 @@ class SettingsTableController: UITableViewController {
 
   func buildResetHistoryController() -> UIAlertController {
     let title = localizer.localize("History Will Be Reset")
-    let message = localizer.localize("Please Confir_m Your Choice")
+    let message = localizer.localize("Please Confirm Your Choice")
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
