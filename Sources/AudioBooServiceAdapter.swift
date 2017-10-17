@@ -20,9 +20,6 @@ class AudioBooServiceAdapter: ServiceAdapter {
   public init(mobile: Bool=false) {
     super.init(dataSource: AudioBooDataSource(), mobile: mobile)
 
-    bookmarks.load()
-    history.load()
-
     bookmarksManager = BookmarksManager(bookmarks)
     historyManager = HistoryManager(history)
 
