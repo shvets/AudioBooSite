@@ -15,7 +15,7 @@ class AuthorsLetterGroupsTableViewController: UITableViewController {
 
   var parentId: String?
   
-  private var items: Items!
+  private var items = Items()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,7 +24,7 @@ class AuthorsLetterGroupsTableViewController: UITableViewController {
 
     title = localizer.localize("Range")
 
-    items = Items() {
+    items.pageLoader.load = {
       let adapter = AudioBooServiceAdapter(mobile: true)
       adapter.params["requestType"] = "Authors Letter Groups"
       adapter.params["parentId"] = self.parentId

@@ -11,7 +11,7 @@ class AuthorsLettersTableViewController: UITableViewController {
   public let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
 #endif
 
-  private var items: Items!
+  private var items = Items()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -20,7 +20,7 @@ class AuthorsLettersTableViewController: UITableViewController {
 
     title = localizer.localize("Letters")
 
-    items = Items() {
+    items.pageLoader.load = {
       let adapter = AudioBooServiceAdapter(mobile: true)
       adapter.params["requestType"] = "Authors Letters"
 

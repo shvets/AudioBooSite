@@ -13,7 +13,7 @@ class AuthorsTableViewController: UITableViewController {
 
   var selectedItem: Item?
 
-  private var items: Items!
+  private var items = Items()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -22,7 +22,7 @@ class AuthorsTableViewController: UITableViewController {
 
     title = localizer.localize("Authors")
 
-    items = Items() {
+    items.pageLoader.load = {
       let adapter = AudioBooServiceAdapter(mobile: true)
       adapter.params["requestType"] = "Authors"
       adapter.params["selectedItem"] = self.selectedItem

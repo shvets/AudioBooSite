@@ -7,7 +7,7 @@ open class AudioBooTableViewController: UITableViewController {
 
   let localizer = Localizer(AudioBooServiceAdapter.BundleId, bundleClass: AudioBooSite.self)
 
-  private var items: Items!
+  private var items = Items()
 
   override open func viewDidLoad() {
     super.viewDidLoad()
@@ -16,7 +16,7 @@ open class AudioBooTableViewController: UITableViewController {
 
     title = localizer.localize("AudioBoo")
 
-    items = Items() {
+    items.pageLoader.load = {
       return self.loadData()
     }
 
