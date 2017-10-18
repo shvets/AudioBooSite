@@ -15,7 +15,6 @@
 		D56A71FE782D975C8C96CE1E /* AudioBooDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A7D46B94A2874BCA014FB /* AudioBooDataSource.swift */; };
 		D56A73233333D3D01AC138B2 /* AudioBooMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A755620C582988CB45960 /* AudioBooMediaItem.swift */; };
 		D56A78A8BD954C5C9402AFF9 /* AudioBooTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A7A7FDE5BC17626514829 /* AudioBooTableViewController.swift */; };
-		D56A78DDD98C771228830693 /* AudioBooServiceAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A7A879EED3E022AE748B8 /* AudioBooServiceAdapter.swift */; };
 		D56A78E3353E302476E5F97E /* AuthorsLetterGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A7E93893D75B71CBF5D09 /* AuthorsLetterGroupsTableViewController.swift */; };
 		D56A78FA86458CE09235C8BB /* SettingsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A75C93A274283C4FDBF8F /* SettingsTableController.swift */; };
 		D56A79475E9FD2FA43066D7C /* AudioBooService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A79F6DD87F2711478CAB6 /* AudioBooService.swift */; };
@@ -53,7 +52,6 @@
 		D56A75C93A274283C4FDBF8F /* SettingsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableController.swift; sourceTree = "<group>"; };
 		D56A79F6DD87F2711478CAB6 /* AudioBooService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBooService.swift; sourceTree = "<group>"; };
 		D56A7A7FDE5BC17626514829 /* AudioBooTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBooTableViewController.swift; sourceTree = "<group>"; };
-		D56A7A879EED3E022AE748B8 /* AudioBooServiceAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBooServiceAdapter.swift; sourceTree = "<group>"; };
 		D56A7D46B94A2874BCA014FB /* AudioBooDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBooDataSource.swift; sourceTree = "<group>"; };
 		D56A7E93893D75B71CBF5D09 /* AuthorsLetterGroupsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorsLetterGroupsTableViewController.swift; sourceTree = "<group>"; };
 		FA6C122F1EAED8F500DA4A90 /* Just.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Just.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/EtvnetApp-auvgeykttffxrlaelzqpbfeqnwis/Build/Products/Debug-iphoneos/Just.framework"; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 				D56A7D46B94A2874BCA014FB /* AudioBooDataSource.swift */,
 				D56A755620C582988CB45960 /* AudioBooMediaItem.swift */,
 				D56A79F6DD87F2711478CAB6 /* AudioBooService.swift */,
-				D56A7A879EED3E022AE748B8 /* AudioBooServiceAdapter.swift */,
 				D56A702C1A4E27B1D199C5F9 /* ios */,
 				FA73FD041EB0CB4800A26CD8 /* Localizable.strings */,
 				2DBA13D0DFD60B444E9FB672 /* AudioBooSite.swift */,
@@ -297,7 +294,6 @@
 				D56A71FE782D975C8C96CE1E /* AudioBooDataSource.swift in Sources */,
 				D56A73233333D3D01AC138B2 /* AudioBooMediaItem.swift in Sources */,
 				D56A79475E9FD2FA43066D7C /* AudioBooService.swift in Sources */,
-				D56A78DDD98C771228830693 /* AudioBooServiceAdapter.swift in Sources */,
 				D56A78A8BD954C5C9402AFF9 /* AudioBooTableViewController.swift in Sources */,
 				D56A78E3353E302476E5F97E /* AuthorsLetterGroupsTableViewController.swift in Sources */,
 				D56A7D121313058FDE6A6FDE /* AuthorsLettersTableViewController.swift in Sources */,
