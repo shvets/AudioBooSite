@@ -14,14 +14,11 @@ class AudioBooServiceAdapter: ServiceAdapter {
   lazy var bookmarks = Bookmarks(AudioBooServiceAdapter.bookmarksFileName)
   lazy var history = History(AudioBooServiceAdapter.historyFileName)
 
-  var bookmarksManager: BookmarksManager?
-  var historyManager: HistoryManager?
+  lazy var bookmarksManager = BookmarksManager(bookmarks)
+  lazy var historyManager = HistoryManager(history)
 
   public init(mobile: Bool=false) {
     super.init(dataSource: AudioBooDataSource(), mobile: mobile)
-
-    bookmarksManager = BookmarksManager(bookmarks)
-    historyManager = HistoryManager(history)
 
     pageLoader.load = {
       return try self.load()
@@ -48,8 +45,10 @@ class AudioBooServiceAdapter: ServiceAdapter {
       "pageSize": 12,
       "rowSize": 1,
       "mobile": true,
-      "bookmarksManager": bookmarksManager as Any,
-      "historyManager": historyManager as Any
+      "bookmarksManager": bookmarksManager,
+      "historyManager": historyManager,
+      "dataSource": dataSource,
+      "storyboardId": AudioBooServiceAdapter.StoryboardId
     ]
   }
 }
