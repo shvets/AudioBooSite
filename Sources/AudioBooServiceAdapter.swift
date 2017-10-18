@@ -48,7 +48,8 @@ class AudioBooServiceAdapter: ServiceAdapter {
       "bookmarksManager": bookmarksManager,
       "historyManager": historyManager,
       "dataSource": dataSource,
-      "storyboardId": AudioBooServiceAdapter.StoryboardId
+      "storyboardId": AudioBooServiceAdapter.StoryboardId,
+      "bundleId": AudioBooServiceAdapter.BundleId
     ]
   }
 }
