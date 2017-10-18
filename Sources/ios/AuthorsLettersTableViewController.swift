@@ -5,7 +5,9 @@ class AuthorsLettersTableViewController: UITableViewController {
   static let SegueIdentifier = "Authors Letters"
   let CellIdentifier = "AuthorsLetterTableCell"
 
-  let localizer = Localizer(AudioBooServiceAdapter.BundleId, bundleClass: AudioBooSite.self)
+  let localizer = Localizer(AudioBooService.BundleId, bundleClass: AudioBooSite.self)
+
+  let service = AudioBooService()
 
 #if os(iOS)
   public let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -21,10 +23,10 @@ class AuthorsLettersTableViewController: UITableViewController {
     title = localizer.localize("Letters")
 
     items.pageLoader.load = {
-      let adapter = AudioBooServiceAdapter(mobile: true)
-      adapter.params["requestType"] = "Authors Letters"
-
-      return try adapter.load()
+      var params = Parameters()
+      params["requestType"] = "Authors Letters"
+      
+      return try self.service.dataSource.load(params: params)
     }
     
     #if os(iOS)
@@ -35,7 +37,7 @@ class AuthorsLettersTableViewController: UITableViewController {
     items.loadInitialData(tableView)
   }
 
-// MARK: UITableViewDataSource
+  // MARK: UITableViewDataSource
 
   override open func numberOfSections(in tableView: UITableView) -> Int {
     return 1

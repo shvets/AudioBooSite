@@ -6,8 +6,10 @@ class SettingsTableController: UITableViewController {
 
   let CellIdentifier = "SettingTableCell"
 
-  let localizer = Localizer(AudioBooServiceAdapter.BundleId, bundleClass: AudioBooSite.self)
+  let localizer = Localizer(AudioBooService.BundleId, bundleClass: AudioBooSite.self)
 
+  let service = AudioBooService()
+  
   private var items = Items()
 
   override func viewDidLoad() {
@@ -24,12 +26,12 @@ class SettingsTableController: UITableViewController {
 
   func loadSettingsMenu() -> [Item] {
      return [
-      Item(name: "Reset History"),
+       Item(name: "Reset History"),
        Item(name: "Reset Bookmarks")
     ]
   }
 
- // MARK: UITableViewDataSource
+  // MARK: UITableViewDataSource
 
   override open func numberOfSections(in tableView: UITableView) -> Int {
     return 1
@@ -72,11 +74,9 @@ class SettingsTableController: UITableViewController {
     let message = localizer.localize("Please Confirm Your Choice")
 
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-
-    let adapter = AudioBooServiceAdapter(mobile: true)
-
+    
     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-      let history = adapter.history
+      let history = self.service.history
 
       history.clear()
       history.save()
@@ -94,12 +94,10 @@ class SettingsTableController: UITableViewController {
     let title = localizer.localize("Bookmarks Will Be Reset")
     let message = localizer.localize("Please Confirm Your Choice")
 
-    let adapter = AudioBooServiceAdapter(mobile: true)
-
     let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-      let bookmarks = adapter.bookmarks
+      let bookmarks = self.service.bookmarks
 
       bookmarks.clear()
       bookmarks.save()

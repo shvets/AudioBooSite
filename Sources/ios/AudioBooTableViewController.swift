@@ -5,7 +5,9 @@ open class AudioBooTableViewController: UITableViewController {
   static let SegueIdentifier = "Audio Boo"
   let CellIdentifier = "AudioBooTableCell"
 
-  let localizer = Localizer(AudioBooServiceAdapter.BundleId, bundleClass: AudioBooSite.self)
+  let localizer = Localizer(AudioBooService.BundleId, bundleClass: AudioBooSite.self)
+
+  let service = AudioBooService()
 
   private var items = Items()
 
@@ -17,13 +19,13 @@ open class AudioBooTableViewController: UITableViewController {
     title = localizer.localize("AudioBoo")
 
     items.pageLoader.load = {
-      return self.loadData()
+      return self.loadMainMenu()
     }
 
     items.loadInitialData(tableView)
   }
 
-  func loadData() -> [Item] {
+  func loadMainMenu() -> [Item] {
     return [
       MediaName(name: "Bookmarks", imageName: "Star"),
       MediaName(name: "History", imageName: "Bookmark"),
@@ -33,7 +35,7 @@ open class AudioBooTableViewController: UITableViewController {
     ]
   }
 
- // MARK: UITableViewDataSource
+  // MARK: UITableViewDataSource
 
   override open func numberOfSections(in tableView: UITableView) -> Int {
     return 1
@@ -87,23 +89,18 @@ open class AudioBooTableViewController: UITableViewController {
 
             let mediaItem = items.getItem(for: indexPath)
 
-            let adapter = AudioBooServiceAdapter(mobile: true)
-
             destination.params["requestType"] = mediaItem.name
             destination.params["parentName"] = localizer.localize(mediaItem.name!)
 
-            destination.configuration = adapter.getConfiguration()
+            destination.configuration = service.getConfiguration()
           }
 
         case SearchTableController.SegueIdentifier:
           if let destination = segue.destination.getActionController() as? SearchTableController {
-
-            let adapter = AudioBooServiceAdapter(mobile: true)
-
             destination.params["requestType"] = "Search"
             destination.params["parentName"] = localizer.localize("Search Results")
 
-            destination.configuration = adapter.getConfiguration()
+            destination.configuration = service.getConfiguration()
           }
 
         default: break

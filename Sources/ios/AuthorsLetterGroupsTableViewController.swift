@@ -5,7 +5,9 @@ class AuthorsLetterGroupsTableViewController: UITableViewController {
   static let SegueIdentifier = "Authors Letter Groups"
   let CellIdentifier = "AuthorsLetterGroupTableCell"
 
-  let localizer = Localizer(AudioBooServiceAdapter.BundleId, bundleClass: AudioBooSite.self)
+  let localizer = Localizer(AudioBooService.BundleId, bundleClass: AudioBooSite.self)
+
+  let service = AudioBooService()
 
 #if os(iOS)
   public let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -25,11 +27,12 @@ class AuthorsLetterGroupsTableViewController: UITableViewController {
     title = localizer.localize("Range")
 
     items.pageLoader.load = {
-      let adapter = AudioBooServiceAdapter(mobile: true)
-      adapter.params["requestType"] = "Authors Letter Groups"
-      adapter.params["parentId"] = self.parentId
+      var params = Parameters()
+      params["requestType"] = "Authors Letter Groups"
+
+      params["parentId"] = self.parentId
       
-      return try adapter.load()
+      return try self.service.dataSource.load(params: params)
     }
 
     #if os(iOS)

@@ -5,7 +5,9 @@ class AuthorsTableViewController: UITableViewController {
   static let SegueIdentifier = "Authors"
   let CellIdentifier = "AuthorTableCell"
 
-  let localizer = Localizer(AudioBooServiceAdapter.BundleId, bundleClass: AudioBooSite.self)
+  let localizer = Localizer(AudioBooService.BundleId, bundleClass: AudioBooSite.self)
+
+  let service = AudioBooService()
 
 #if os(iOS)
   public let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -23,11 +25,12 @@ class AuthorsTableViewController: UITableViewController {
     title = localizer.localize("Authors")
 
     items.pageLoader.load = {
-      let adapter = AudioBooServiceAdapter(mobile: true)
-      adapter.params["requestType"] = "Authors"
-      adapter.params["selectedItem"] = self.selectedItem
+      var params = Parameters()
+      params["requestType"] = "Authors"
 
-      return try adapter.load()
+      params["selectedItem"] = self.selectedItem
+      
+      return try self.service.dataSource.load(params: params)
     }
 
     #if os(iOS)
@@ -38,7 +41,7 @@ class AuthorsTableViewController: UITableViewController {
     items.loadInitialData(tableView)
   }
 
-// MARK: UITableViewDataSource
+  // MARK: UITableViewDataSource
 
   override open func numberOfSections(in tableView: UITableView) -> Int {
     return 1
@@ -75,12 +78,10 @@ class AuthorsTableViewController: UITableViewController {
              let view = sender as? MediaNameTableCell,
              let indexPath = tableView.indexPath(for: view) {
 
-            let adapter = AudioBooServiceAdapter(mobile: true)
-
             destination.params["requestType"] = "Author"
             destination.params["selectedItem"] = items.getItem(for: indexPath)
 
-            destination.configuration = adapter.getConfiguration()
+            destination.configuration = service.getConfiguration()
           }
 
         default: break
