@@ -45,7 +45,7 @@ class AudioBooDataSource: DataSource {
 
     case "Versions":
       if let selectedItem = selectedItem,
-        let path = selectedItem.id as? String {
+        let path = selectedItem.id {
 
         let playlistUrls = try service.getPlaylistUrls(path)
 
@@ -56,13 +56,13 @@ class AudioBooDataSource: DataSource {
 
     case "Author":
       if let selectedItem = selectedItem,
-         let id = selectedItem.id as? String {
+        let id = selectedItem.id {
         items = adjustItems(try service.getBooks(id))
       }
 
     case "Tracks":
       if let selectedItem = selectedItem,
-         let id = selectedItem.id as? String {
+        let id = selectedItem.id {
         let playlistUrls = try service.getPlaylistUrls(id)
 
         let version = params["version"] as? Int ?? 0
@@ -115,12 +115,12 @@ class AudioBooDataSource: DataSource {
         return MediaItem(name: track.title + ".mp3", id: String(describing: track.url))
       }
     }
-
     else if let items = items as? [[String: Any]] {
       newItems = transform(items) { item in
         createMediaItem(item as! [String: Any])
       }
-    } else if let items = items as? [Item] {
+    }
+    else if let items = items as? [Item] {
       newItems = items
     }
 
