@@ -4,15 +4,13 @@ import AudioPlayer
 open class AudioBooMediaItemsController: MediaItemsController {
   override open func navigate(from view: UICollectionViewCell, playImmediately: Bool=false) {
     if let indexPath = collectionView?.indexPath(for: view),
-      let mediaItem = items.getItem(for: indexPath) as? MediaItem {
-      
-      if mediaItem.isAudioContainer() {
-        if mediaItem.hasMultipleVersions() {
-          performSegue(withIdentifier: AudioVersionsController.SegueIdentifier, sender: view)
-        }
-        else {
-          performSegue(withIdentifier: AudioItemsController.SegueIdentifier, sender: view)
-        }
+      let mediaItem = items.getItem(for: indexPath) as? AudioBooMediaItem {
+
+      if mediaItem.hasMultipleVersions() {
+        performSegue(withIdentifier: AudioVersionsController.SegueIdentifier, sender: view)
+      }
+      else {
+        performSegue(withIdentifier: AudioItemsController.SegueIdentifier, sender: view)
       }
     }
   }
