@@ -36,19 +36,14 @@ open class AudioBooMediaItemsController: MediaItemsController {
             destination.pageLoader.load = {
               var items: [AudioItem] = []
               
-              var newParams = Parameters()
-              
-              //              for (key, value) in self.params {
-              //                newParams[key] = value
-              //              }
-              
-              newParams["pageSize"] = self.items.pageLoader.pageSize
-              newParams["currentPage"] = self.items.pageLoader.currentPage
-              newParams["requestType"] = "Versions"
-              newParams["selectedItem"] = mediaItem
+              var params = Parameters()
 
-              if let data = try self.dataSource?.load(params: newParams),
-                let mediaItems = data as? [MediaItem] {
+              params["pageSize"] = self.items.pageLoader.pageSize
+              params["currentPage"] = self.items.pageLoader.currentPage
+              params["requestType"] = "Versions"
+              params["selectedItem"] = mediaItem
+
+              if let mediaItems = try self.dataSource?.load(params: params) as? [MediaItem] {
                 for mediaItem in mediaItems {
                   let item = mediaItem
                   
@@ -62,18 +57,13 @@ open class AudioBooMediaItemsController: MediaItemsController {
             destination.audioItemsLoad = {
               var items: [AudioItem] = []
               
-              var newParams = Parameters()
+              var params = Parameters()
               
-              for (key, value) in self.params {
-                newParams[key] = value
-              }
-              
-              newParams["requestType"] = "Tracks"
-              newParams["selectedItem"] = mediaItem
-              newParams["version"] = destination.version
+              params["requestType"] = "Tracks"
+              params["selectedItem"] = mediaItem
+              params["version"] = destination.version
 
-              if let data = try self.dataSource?.load(params: newParams),
-                let mediaItems = data as? [MediaItem] {
+              if let mediaItems = try self.dataSource?.load(params: params) as? [MediaItem] {
                 for mediaItem in mediaItems {
                   let item = mediaItem
                   
@@ -91,37 +81,31 @@ open class AudioBooMediaItemsController: MediaItemsController {
             destination.thumb = mediaItem.thumb
             destination.id = mediaItem.id
             
-            if let requestType = params["requestType"] as? String {
-              if requestType != "History" {
-                historyManager?.addHistoryItem(mediaItem)
-              }
+            if let requestType = params["requestType"] as? String,
+               requestType != "History" {
+              historyManager?.addHistoryItem(mediaItem)
             }
             
             destination.pageLoader.load = {
               var items: [AudioItem] = []
               
-              var newParams = Parameters()
+              var params = Parameters()
               
-              for (key, value) in self.params {
-                newParams[key] = value
-              }
-              
-              newParams["requestType"] = "Tracks"
-              newParams["selectedItem"] = mediaItem
+              params["requestType"] = "Tracks"
+              params["selectedItem"] = mediaItem
 
-              if let data = try self.dataSource?.load(params: newParams) {
-                if let mediaItems = data as? [MediaItem] {
-                  for mediaItem in mediaItems {
-                    let item = mediaItem
+              if let mediaItems = try self.dataSource?.load(params: params) as? [MediaItem] {
+                for mediaItem in mediaItems {
+                  let item = mediaItem
                     
-                    items.append(AudioItem(name: item.name!, id: item.id!))
-                  }
+                  items.append(AudioItem(name: item.name!, id: item.id!))
                 }
               }
               
               return items
             }
           }
+
         default:
           super.prepare(for: segue, sender: sender)
         }

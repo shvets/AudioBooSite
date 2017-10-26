@@ -25,7 +25,7 @@ public class AudioBooService {
 
   func getConfiguration() -> [String: Any] {
     return [
-      "pageSize": 12,
+      "pageSize": 27,
       "rowSize": 1,
       "mobile": true,
       "bookmarksManager": bookmarksManager,

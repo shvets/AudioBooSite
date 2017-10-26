@@ -57,7 +57,7 @@ class AudioBooDataSource: DataSource {
     case "Author":
       if let selectedItem = selectedItem,
         let id = selectedItem.id {
-        items = adjustItems(try service.getBooks(id))
+        items = adjustItems(try service.getBooks(id, page: currentPage))
       }
 
     case "Tracks":
