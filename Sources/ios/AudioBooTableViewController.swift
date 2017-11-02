@@ -1,5 +1,6 @@
 import UIKit
 import TVSetKit
+import PageLoader
 
 open class AudioBooTableViewController: UITableViewController {
   static let SegueIdentifier = "Audio Boo"
@@ -8,7 +9,7 @@ open class AudioBooTableViewController: UITableViewController {
   let localizer = Localizer(AudioBooService.BundleId, bundleClass: AudioBooSite.self)
 
   let service = AudioBooService()
-
+  let pageLoader = PageLoader()
   private var items = Items()
 
   override open func viewDidLoad() {
@@ -18,11 +19,11 @@ open class AudioBooTableViewController: UITableViewController {
 
     title = localizer.localize("AudioBoo")
 
-    items.pageLoader.load = {
+    pageLoader.load = {
       return self.loadMainMenu()
     }
 
-    items.pageLoader.loadData { result in
+    pageLoader.loadData { result in
       if let items = result as? [Item] {
         self.items.items = items
 

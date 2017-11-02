@@ -1,5 +1,6 @@
 import UIKit
 import TVSetKit
+import PageLoader
 
 class SettingsTableController: UITableViewController {
   static let SegueIdentifier = "Settings"
@@ -9,7 +10,7 @@ class SettingsTableController: UITableViewController {
   let localizer = Localizer(AudioBooService.BundleId, bundleClass: AudioBooSite.self)
 
   let service = AudioBooService()
-  
+  let pageLoader = PageLoader()
   private var items = Items()
 
   override func viewDidLoad() {
@@ -17,11 +18,11 @@ class SettingsTableController: UITableViewController {
 
     self.clearsSelectionOnViewWillAppear = false
 
-    items.pageLoader.load = {
+    pageLoader.load = {
       return self.loadSettingsMenu()
     }
 
-    items.pageLoader.loadData { result in
+    pageLoader.loadData { result in
       if let items = result as? [Item] {
         self.items.items = items
 

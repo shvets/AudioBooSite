@@ -36,8 +36,8 @@ open class AudioBooMediaItemsController: MediaItemsController {
               
               var params = Parameters()
 
-              params["pageSize"] = self.items.pageLoader.pageSize
-              params["currentPage"] = self.items.pageLoader.currentPage
+              params["pageSize"] = self.pageLoader.pageSize
+              params["currentPage"] = self.pageLoader.currentPage
               params["requestType"] = "Versions"
               params["selectedItem"] = mediaItem
 

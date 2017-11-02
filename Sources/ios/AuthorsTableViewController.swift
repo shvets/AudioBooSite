@@ -1,22 +1,25 @@
 import UIKit
 import TVSetKit
+import PageLoader
 
 class AuthorsTableViewController: UITableViewController {
   static let SegueIdentifier = "Authors"
   let CellIdentifier = "AuthorTableCell"
 
   let localizer = Localizer(AudioBooService.BundleId, bundleClass: AudioBooSite.self)
-
+  
+  #if os(iOS)
+  public let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+  #endif
+  
   let service = AudioBooService()
 
-#if os(iOS)
-  public let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-#endif
-
-  var selectedItem: Item?
-
+  let pageLoader = PageLoader()
+  
   private var items = Items()
 
+  var selectedItem: Item?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -26,10 +29,10 @@ class AuthorsTableViewController: UITableViewController {
 
     #if os(iOS)
       tableView?.backgroundView = activityIndicatorView
-      items.pageLoader.spinner = PlainSpinner(activityIndicatorView)
+      //pageLoader.spinner = PlainSpinner(activityIndicatorView)
     #endif
 
-    items.pageLoader.load = {
+    pageLoader.load = {
       var params = Parameters()
       params["requestType"] = "Authors"
 
@@ -38,7 +41,7 @@ class AuthorsTableViewController: UITableViewController {
       return try self.service.dataSource.load(params: params)
     }
 
-    items.pageLoader.loadData { result in
+    pageLoader.loadData { result in
       if let items = result as? [Item] {
         self.items.items = items
 
