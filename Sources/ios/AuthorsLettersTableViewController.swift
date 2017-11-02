@@ -34,7 +34,13 @@ class AuthorsLettersTableViewController: UITableViewController {
       items.pageLoader.spinner = PlainSpinner(activityIndicatorView)
     #endif
 
-    items.loadInitialData(tableView)
+    items.pageLoader.loadData { result in
+      if let items = result as? [Item] {
+        self.items.items = items
+
+        self.tableView?.reloadData()
+      }
+    }
   }
 
   // MARK: UITableViewDataSource

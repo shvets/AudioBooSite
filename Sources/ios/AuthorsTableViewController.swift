@@ -24,6 +24,11 @@ class AuthorsTableViewController: UITableViewController {
 
     title = localizer.localize("Authors")
 
+    #if os(iOS)
+      tableView?.backgroundView = activityIndicatorView
+      items.pageLoader.spinner = PlainSpinner(activityIndicatorView)
+    #endif
+
     items.pageLoader.load = {
       var params = Parameters()
       params["requestType"] = "Authors"
@@ -33,12 +38,13 @@ class AuthorsTableViewController: UITableViewController {
       return try self.service.dataSource.load(params: params)
     }
 
-    #if os(iOS)
-      tableView?.backgroundView = activityIndicatorView
-      items.pageLoader.spinner = PlainSpinner(activityIndicatorView)
-    #endif
+    items.pageLoader.loadData { result in
+      if let items = result as? [Item] {
+        self.items.items = items
 
-    items.loadInitialData(tableView)
+        self.tableView?.reloadData()
+      }
+    }
   }
 
   // MARK: UITableViewDataSource
