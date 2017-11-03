@@ -36,10 +36,9 @@ class AuthorsLetterGroupsTableViewController: UITableViewController {
     func load() throws -> [Any] {
       var params = Parameters()
       params["requestType"] = "Authors Letter Groups"
-
       params["parentId"] = self.parentId
       
-      return try self.service.dataSource.load(params: params)
+      return try self.service.dataSource.loadAndWait(params: params)
     }
 
     pageLoader.loadData(onLoad: load) { result in

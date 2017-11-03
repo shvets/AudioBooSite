@@ -94,6 +94,7 @@ open class AudioBooTableViewController: UITableViewController {
 
             destination.params["requestType"] = mediaItem.name
             destination.params["parentName"] = localizer.localize(mediaItem.name!)
+            destination.params["async"] = true
 
             destination.configuration = service.getConfiguration()
           }
@@ -102,6 +103,7 @@ open class AudioBooTableViewController: UITableViewController {
           if let destination = segue.destination.getActionController() as? SearchTableController {
             destination.params["requestType"] = "Search"
             destination.params["parentName"] = localizer.localize("Search Results")
+            destination.params["async"] = true
 
             destination.configuration = service.getConfiguration()
           }

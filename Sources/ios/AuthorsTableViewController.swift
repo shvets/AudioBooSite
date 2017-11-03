@@ -35,13 +35,12 @@ class AuthorsTableViewController: UITableViewController {
     func load() throws -> [Any] {
       var params = Parameters()
       params["requestType"] = "Authors"
-
       params["selectedItem"] = self.selectedItem
       
-      return try self.service.dataSource.load(params: params)
+      return try self.service.dataSource.loadAndWait(params: params)
     }
 
-    pageLoader.loadData { result in
+    pageLoader.loadData(onLoad: load) { result in
       if let items = result as? [Item] {
         self.items.items = items
 
@@ -89,7 +88,8 @@ class AuthorsTableViewController: UITableViewController {
 
             destination.params["requestType"] = "Author"
             destination.params["selectedItem"] = items.getItem(for: indexPath)
-
+            destination.params["async"] = true
+            
             destination.configuration = service.getConfiguration()
           }
 
