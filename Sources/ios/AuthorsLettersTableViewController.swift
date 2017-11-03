@@ -25,19 +25,19 @@ class AuthorsLettersTableViewController: UITableViewController {
 
     title = localizer.localize("Letters")
 
-    pageLoader.load = {
-      var params = Parameters()
-      params["requestType"] = "Authors Letters"
-      
-      return try self.service.dataSource.load(params: params)
-    }
-    
     #if os(iOS)
       tableView?.backgroundView = activityIndicatorView
       pageLoader.spinner = BaseSpinner(activityIndicatorView)
     #endif
 
-    pageLoader.loadData { result in
+    func load() throws -> [Any] {
+      var params = Parameters()
+      params["requestType"] = "Authors Letters"
+      
+      return try self.service.dataSource.load(params: params)
+    }
+
+    pageLoader.loadData(onLoad: load) { result in
       if let items = result as? [Item] {
         self.items.items = items
 

@@ -32,7 +32,7 @@ class AuthorsTableViewController: UITableViewController {
       pageLoader.spinner = BaseSpinner(activityIndicatorView)
     #endif
 
-    pageLoader.load = {
+    func load() throws -> [Any] {
       var params = Parameters()
       params["requestType"] = "Authors"
 

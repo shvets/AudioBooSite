@@ -19,11 +19,7 @@ open class AudioBooTableViewController: UITableViewController {
 
     title = localizer.localize("AudioBoo")
 
-    pageLoader.load = {
-      return self.loadMainMenu()
-    }
-
-    pageLoader.loadData { result in
+    pageLoader.loadData(onLoad: loadMainMenu) { result in
       if let items = result as? [Item] {
         self.items.items = items
 
@@ -32,7 +28,7 @@ open class AudioBooTableViewController: UITableViewController {
     }
   }
 
-  func loadMainMenu() -> [Item] {
+  func loadMainMenu() throws -> [Any] {
     return [
       MediaName(name: "Bookmarks", imageName: "Star"),
       MediaName(name: "History", imageName: "Bookmark"),
