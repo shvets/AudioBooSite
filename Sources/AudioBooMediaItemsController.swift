@@ -68,7 +68,19 @@ open class AudioBooMediaItemsController: MediaItemsController {
                   items.append(AudioItem(name: item.name!, id: item.id!))
                 }
               }
-              
+
+//              let semaphore = DispatchSemaphore.init(value: 0)
+//
+//              _ = try self.dataSource?.load(params: params).map { result in
+//                for item in result as! [MediaItem] {
+//                  items.append(AudioItem(name: item.name!, id: item.id!))
+//                }
+//              }.subscribe(onNext: { result in
+//                semaphore.signal()
+//              })
+//
+//              _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+
               return items
             }
           }
