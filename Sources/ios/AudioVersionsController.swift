@@ -22,9 +22,8 @@ open class AudioVersionsController: UITableViewController {
   public var items: [AudioItem] = []
   public var version: Int = 0
   
-  public var audioItemsLoad: (() throws -> [Any]) = {
-    return []
-  }
+  public var loadAudioVersions: (() throws -> [Any])?
+  public var loadAudioItems: (() throws -> [Any])?
   
   #if os(iOS)
   
@@ -44,7 +43,7 @@ open class AudioVersionsController: UITableViewController {
     
     pageLoader.spinner = PlainSpinner(activityIndicatorView)
     
-    pageLoader.loadData { result in
+    pageLoader.loadData(onLoad: loadAudioVersions!) { result in
       if let items = result as? [AudioItem] {
         self.items = items
       }
@@ -103,7 +102,7 @@ open class AudioVersionsController: UITableViewController {
           destination.pageLoader.pageSize = pageLoader.pageSize
           destination.pageLoader.rowSize = pageLoader.rowSize
           
-          destination.pageLoader.load = audioItemsLoad
+          destination.loadAudioItems = loadAudioItems
         }
         
       default: break

@@ -31,7 +31,7 @@ open class AudioBooMediaItemsController: MediaItemsController {
             destination.thumb = mediaItem.thumb
             destination.id = mediaItem.id
             
-            destination.pageLoader.load = {
+            destination.loadAudioVersions = {
               var items: [AudioItem] = []
               
               var params = Parameters()
@@ -52,7 +52,7 @@ open class AudioBooMediaItemsController: MediaItemsController {
               return items
             }
             
-            destination.audioItemsLoad = {
+            destination.loadAudioItems = {
               var items: [AudioItem] = []
               
               var params = Parameters()
@@ -69,18 +69,6 @@ open class AudioBooMediaItemsController: MediaItemsController {
                 }
               }
 
-//              let semaphore = DispatchSemaphore.init(value: 0)
-//
-//              _ = try self.dataSource?.load(params: params).map { result in
-//                for item in result as! [MediaItem] {
-//                  items.append(AudioItem(name: item.name!, id: item.id!))
-//                }
-//              }.subscribe(onNext: { result in
-//                semaphore.signal()
-//              })
-//
-//              _ = semaphore.wait(timeout: DispatchTime.distantFuture)
-
               return items
             }
           }
@@ -96,7 +84,7 @@ open class AudioBooMediaItemsController: MediaItemsController {
               historyManager?.addHistoryItem(mediaItem)
             }
             
-            destination.pageLoader.load = {
+            destination.loadAudioItems = {
               var items: [AudioItem] = []
               
               var params = Parameters()
