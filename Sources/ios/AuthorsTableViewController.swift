@@ -88,7 +88,6 @@ class AuthorsTableViewController: UITableViewController {
 
             destination.params["requestType"] = "Author"
             destination.params["selectedItem"] = items.getItem(for: indexPath)
-            destination.params["async"] = true
             
             destination.configuration = service.getConfiguration()
           }
