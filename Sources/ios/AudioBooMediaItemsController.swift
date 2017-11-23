@@ -54,9 +54,9 @@ open class AudioBooMediaItemsController: MediaItemsController {
             
             destination.loadAudioItems = {
               var items: [AudioItem] = []
-              
+
               var params = Parameters()
-              
+
               params["requestType"] = "Tracks"
               params["selectedItem"] = mediaItem
               params["version"] = destination.version
@@ -64,7 +64,7 @@ open class AudioBooMediaItemsController: MediaItemsController {
               if let mediaItems = try self.dataSource?.loadAndWait(params: params) as? [MediaItem] {
                 for mediaItem in mediaItems {
                   let item = mediaItem
-                  
+
                   items.append(AudioItem(name: item.name!, id: item.id!))
                 }
               }
@@ -86,20 +86,20 @@ open class AudioBooMediaItemsController: MediaItemsController {
             
             destination.loadAudioItems = {
               var items: [AudioItem] = []
-              
+
               var params = Parameters()
-              
+
               params["requestType"] = "Tracks"
               params["selectedItem"] = mediaItem
 
               if let mediaItems = try self.dataSource?.loadAndWait(params: params) as? [MediaItem] {
                 for mediaItem in mediaItems {
                   let item = mediaItem
-                    
+
                   items.append(AudioItem(name: item.name!, id: item.id!))
                 }
               }
-              
+
               return items
             }
           }
