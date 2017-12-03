@@ -94,7 +94,7 @@ open class AudioBooMediaItemsController: MediaItemsController {
     }
   }
 
-  static func loadAudioItems(_ mediaItem: MediaItem, dataSource: DataSource?) throws -> [Any] {
+  static func loadAudioItems(_ mediaItem: MediaItem, dataSource: DataSource?) -> (() throws -> [Any])? {
     return {
       var items: [AudioItem] = []
 
