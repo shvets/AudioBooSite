@@ -1,6 +1,7 @@
 import UIKit
 import TVSetKit
 import PageLoader
+import AudioPlayer
 
 open class AudioBooTableViewController: UITableViewController {
   static let SegueIdentifier = "Audio Boo"
@@ -30,6 +31,7 @@ open class AudioBooTableViewController: UITableViewController {
 
   func loadMainMenu() throws -> [Any] {
     return [
+      MediaName(name: "Now Listening", imageName: "Now Listening"),
       MediaName(name: "Bookmarks", imageName: "Star"),
       MediaName(name: "History", imageName: "Bookmark"),
       MediaName(name: "Authors", imageName: "Mark Twain"),
@@ -67,17 +69,20 @@ open class AudioBooTableViewController: UITableViewController {
       let mediaItem = items.getItem(for: indexPath)
 
       switch mediaItem.name! {
-      case "Authors":
-        performSegue(withIdentifier: "Authors Letters", sender: view)
+        case "Now Listening":
+          performSegue(withIdentifier: "Now Listening", sender: view)
 
-      case "Settings":
-        performSegue(withIdentifier: "Settings", sender: view)
+        case "Authors":
+          performSegue(withIdentifier: "Authors Letters", sender: view)
 
-      case "Search":
-        performSegue(withIdentifier: SearchTableController.SegueIdentifier, sender: view)
+        case "Settings":
+          performSegue(withIdentifier: "Settings", sender: view)
 
-      default:
-        performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
+        case "Search":
+          performSegue(withIdentifier: SearchTableController.SegueIdentifier, sender: view)
+
+        default:
+          performSegue(withIdentifier: MediaItemsController.SegueIdentifier, sender: view)
       }
     }
   }
@@ -96,6 +101,22 @@ open class AudioBooTableViewController: UITableViewController {
             destination.params["parentName"] = localizer.localize(mediaItem.name!)
 
             destination.configuration = service.getConfiguration()
+          }
+
+        case "Now Listening":
+          if let destination = segue.destination.getActionController() as? AudioItemsController {
+            let configuration = service.getConfiguration()
+
+            if let dataSource = configuration["dataSource"] as? DataSource,
+               let historyManager = configuration["historyManager"] as? HistoryManager {
+              let mediaItem = historyManager.history.items[historyManager.history.items.count-1].item
+
+              destination.name = mediaItem.name
+              destination.thumb = mediaItem.thumb
+              destination.id = mediaItem.id
+
+              destination.loadAudioItems = AudioBooMediaItemsController.loadAudioItems(mediaItem, dataSource: dataSource)
+            }
           }
 
         case SearchTableController.SegueIdentifier:
