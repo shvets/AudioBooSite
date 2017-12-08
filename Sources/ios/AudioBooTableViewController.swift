@@ -9,6 +9,8 @@ open class AudioBooTableViewController: UITableViewController {
 
   let localizer = Localizer(AudioBooService.BundleId, bundleClass: AudioBooSite.self)
 
+  let audioPlayer = AudioPlayer("audio-boo-player-settings.json")
+
   let service = AudioBooService()
   let pageLoader = PageLoader()
   private var items = Items()
@@ -107,25 +109,21 @@ open class AudioBooTableViewController: UITableViewController {
           if let destination = segue.destination.getActionController() as? AudioItemsController {
             let configuration = service.getConfiguration()
 
-            let playerSettings = AudioPlayer.shared.audioPlayerSettings
+            audioPlayer.loadPlayer()
 
-            do {
-              try playerSettings.load()
+            let playerSettings = audioPlayer.audioPlayerSettings
 
-              if let dataSource = configuration["dataSource"] as? DataSource,
-                 let currentBookId = playerSettings.items["currentBookId"],
-                 let currentBookName = playerSettings.items["currentBookName"],
-                 let currentBookThumb = playerSettings.items["currentBookThumb"] {
+            if let dataSource = configuration["dataSource"] as? DataSource,
+              let currentBookId = playerSettings?.items["currentBookId"],
+               let currentBookName = playerSettings?.items["currentBookName"],
+               let currentBookThumb = playerSettings?.items["currentBookThumb"] {
 
-                destination.name = currentBookName
-                destination.thumb = currentBookThumb
-                destination.id = currentBookId
+              destination.name = currentBookName
+              destination.thumb = currentBookThumb
+              destination.id = currentBookId
+              destination.audioPlayerProperties = "audio-boo-player-settings.json"
 
-                destination.loadAudioItems = AudioBooMediaItemsController.loadAudioItems(currentBookId, dataSource: dataSource)
-              }
-            }
-            catch let error {
-              print("Error loading config file: \(error)")
+              destination.loadAudioItems = AudioBooMediaItemsController.loadAudioItems(currentBookId, dataSource: dataSource)
             }
           }
 
