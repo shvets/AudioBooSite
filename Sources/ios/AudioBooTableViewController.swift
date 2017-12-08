@@ -107,15 +107,25 @@ open class AudioBooTableViewController: UITableViewController {
           if let destination = segue.destination.getActionController() as? AudioItemsController {
             let configuration = service.getConfiguration()
 
-            if let dataSource = configuration["dataSource"] as? DataSource,
-               let historyManager = configuration["historyManager"] as? HistoryManager {
-              let mediaItem = historyManager.history.items[historyManager.history.items.count-1].item
+            let playerSettings = AudioPlayer.shared.audioPlayerSettings
 
-              destination.name = mediaItem.name
-              destination.thumb = mediaItem.thumb
-              destination.id = mediaItem.id
+            do {
+              try playerSettings.load()
 
-              destination.loadAudioItems = AudioBooMediaItemsController.loadAudioItems(mediaItem, dataSource: dataSource)
+              if let dataSource = configuration["dataSource"] as? DataSource,
+                 let currentBookId = playerSettings.items["currentBookId"],
+                 let currentBookName = playerSettings.items["currentBookName"],
+                 let currentBookThumb = playerSettings.items["currentBookThumb"] {
+
+                destination.name = currentBookName
+                destination.thumb = currentBookThumb
+                destination.id = currentBookId
+
+                destination.loadAudioItems = AudioBooMediaItemsController.loadAudioItems(currentBookId, dataSource: dataSource)
+              }
+            }
+            catch let error {
+              print("Error loading config file: \(error)")
             }
           }
 

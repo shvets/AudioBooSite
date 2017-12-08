@@ -83,8 +83,10 @@ open class AudioBooMediaItemsController: MediaItemsController {
                requestType != "History" {
               historyManager?.addHistoryItem(mediaItem)
             }
-            
-            destination.loadAudioItems = AudioBooMediaItemsController.loadAudioItems(mediaItem, dataSource: dataSource)
+
+            if let url = mediaItem.id {
+              destination.loadAudioItems = AudioBooMediaItemsController.loadAudioItems(url, dataSource: dataSource)
+            }
           }
 
         default:
@@ -94,14 +96,14 @@ open class AudioBooMediaItemsController: MediaItemsController {
     }
   }
 
-  static func loadAudioItems(_ mediaItem: MediaItem, dataSource: DataSource?) -> (() throws -> [Any])? {
+  static func loadAudioItems(_ url: String, dataSource: DataSource?) -> (() throws -> [Any])? {
     return {
       var items: [AudioItem] = []
 
       var params = Parameters()
 
       params["requestType"] = "Tracks"
-      params["selectedItem"] = mediaItem
+      params["url"] = url
 
       if let mediaItems = try dataSource?.loadAndWait(params: params) as? [MediaItem] {
         for mediaItem in mediaItems {

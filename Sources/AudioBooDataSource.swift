@@ -69,9 +69,8 @@ class AudioBooDataSource: DataSource {
       }
 
     case "Tracks":
-      if let selectedItem = selectedItem,
-        let id = selectedItem.id {
-        let playlistUrls = try service.getPlaylistUrls(id)
+      if let url = params["url"] as? String {
+        let playlistUrls = try service.getPlaylistUrls(url)
 
         let version = params["version"] as? Int ?? 0
 
