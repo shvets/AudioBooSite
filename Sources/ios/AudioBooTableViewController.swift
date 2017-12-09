@@ -9,8 +9,6 @@ open class AudioBooTableViewController: UITableViewController {
 
   let localizer = Localizer(AudioBooService.BundleId, bundleClass: AudioBooSite.self)
 
-  let audioPlayer = AudioPlayer("audio-boo-player-settings.json")
-
   let service = AudioBooService()
   let pageLoader = PageLoader()
   private var items = Items()
@@ -109,9 +107,7 @@ open class AudioBooTableViewController: UITableViewController {
           if let destination = segue.destination.getActionController() as? AudioItemsController {
             let configuration = service.getConfiguration()
 
-            audioPlayer.loadPlayer()
-
-            let playerSettings = audioPlayer.audioPlayerSettings
+            let playerSettings = service.audioPlayer.audioPlayerSettings
 
             if let dataSource = configuration["dataSource"] as? DataSource,
               let currentBookId = playerSettings?.items["currentBookId"],
@@ -121,7 +117,7 @@ open class AudioBooTableViewController: UITableViewController {
               destination.name = currentBookName
               destination.thumb = currentBookThumb
               destination.id = currentBookId
-              destination.audioPlayerProperties = "audio-boo-player-settings.json"
+              destination.audioPlayer = service.audioPlayer
 
               destination.loadAudioItems = AudioBooMediaItemsController.loadAudioItems(currentBookId, dataSource: dataSource)
             }

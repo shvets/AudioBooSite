@@ -1,6 +1,7 @@
 import Foundation
 import WebAPI
 import TVSetKit
+import AudioPlayer
 
 public class AudioBooService {
   static let shared: AudioBooAPI = {
@@ -10,6 +11,8 @@ public class AudioBooService {
   static let bookmarksFileName = NSHomeDirectory() + "/Library/Caches/audioboo-bookmarks.json"
   static let historyFileName = NSHomeDirectory() + "/Library/Caches/audioboo-history.json"
 
+  static let audioPlayerPropertiesFileName = "audio-boo-player-settings.json"
+
   static let StoryboardId = "AudioBoo"
   static let BundleId = "com.rubikon.AudioBooSite"
 
@@ -18,6 +21,10 @@ public class AudioBooService {
 
   lazy var bookmarksManager = BookmarksManager(bookmarks)
   lazy var historyManager = HistoryManager(history)
+
+  var audioPlayer: AudioPlayer {
+    return AudioPlayer.getAudioPlayer(AudioBooService.audioPlayerPropertiesFileName)
+  }
 
   var dataSource = AudioBooDataSource()
 

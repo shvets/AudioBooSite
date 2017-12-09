@@ -78,8 +78,8 @@ open class AudioBooMediaItemsController: MediaItemsController {
             destination.name = mediaItem.name
             destination.thumb = mediaItem.thumb
             destination.id = mediaItem.id
-            destination.audioPlayerProperties = "audio-boo-player-settings.json"
-            
+            destination.audioPlayer = AudioBooService().audioPlayer
+
             if let requestType = params["requestType"] as? String,
                requestType != "History" {
               historyManager?.addHistoryItem(mediaItem)
