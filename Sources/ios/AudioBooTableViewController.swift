@@ -34,6 +34,7 @@ open class AudioBooTableViewController: UITableViewController {
       MediaName(name: "Now Listening", imageName: "Now Listening"),
       MediaName(name: "Bookmarks", imageName: "Star"),
       MediaName(name: "History", imageName: "Bookmark"),
+      MediaName(name: "All Books", imageName: "Mark Twain"),
       MediaName(name: "Authors", imageName: "Mark Twain"),
       MediaName(name: "Settings", imageName: "Engineering"),
       MediaName(name: "Search", imageName: "Search")

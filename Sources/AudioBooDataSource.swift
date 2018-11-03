@@ -42,6 +42,9 @@ class AudioBooDataSource: DataSource {
         items = Observable.just(adjustItems(try getAuthorsByLetter(letter)))
       }
 
+    case "All Books":
+      items = Observable.just(adjustItems(try service.getAllBooks(page: currentPage) as! [[String: Any]]))
+      
     case "Authors":
       if let selectedItem = selectedItem as? AudioBooMediaItem {
         items = Observable.just(adjustItems(selectedItem.items))
