@@ -1,5 +1,5 @@
 import Foundation
-import WebAPI
+import MediaApis
 import TVSetKit
 import AudioPlayer
 
@@ -21,10 +21,6 @@ public class AudioBooService {
 
   lazy var bookmarksManager = BookmarksManager(bookmarks)
   lazy var historyManager = HistoryManager(history)
-
-  var audioPlayer: AudioPlayer {
-    return AudioPlayer.getAudioPlayer(AudioBooService.audioPlayerPropertiesFileName)
-  }
 
   var dataSource = AudioBooDataSource()
 

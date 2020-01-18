@@ -3,25 +3,25 @@ source 'https://github.com/shvets/Specs.git'
 
 use_frameworks!
 
-target 'AudioBooSite_iOS' do
-  platform :ios, '10.0'
+target 'AudioBooSite' do
+  platform :ios, '12.2'
 
   podspec :path => 'AudioBooSite.podspec'
 
-  target 'AudioBooSite_iOSTests' do
+  target 'AudioBooSiteTests' do
     inherit! :search_paths
   end
 end
 
-target 'AudioBooSite_tvOS' do
-  platform :tvos, '10.10'
-
-  podspec :path => 'AudioBooSite.podspec'
-
-  target 'AudioBooSite_tvOSTests' do
-    inherit! :search_paths
-  end
-end
+# target 'AudioBooSite_tvOS' do
+#   platform :tvos, '12.2'
+#
+#   podspec :path => 'AudioBooSite.podspec'
+#
+#   target 'AudioBooSite_tvOSTests' do
+#     inherit! :search_paths
+#   end
+# end
 
 # target 'AudioBooSite_macOS' do
 #   platform :osx, '10.10'

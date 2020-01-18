@@ -68,5 +68,7 @@ Carthage/Build
 .idea
 .DS_Store
 deploy
+Pods
+*.lock
 
 

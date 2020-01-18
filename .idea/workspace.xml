@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b68012ae-aae4-41e3-ad50-3985f00c4974" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/AudioBooSite.xcodeproj/project.xcworkspace/xcuserdata/alex.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AudioBooSite.xcodeproj/xcuserdata/alex.xcuserdatad/xcschemes/AudioBooSite.xcscheme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AudioBooSite.xcodeproj/xcuserdata/alex.xcuserdatad/xcschemes/xcschememanagement.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AudioBooSite.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AudioBooSite.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AudioBooSite.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/AudioBooSite.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AudioBooSite.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/AudioBooSite.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/AudioBooDataSource.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/AudioBooDataSource.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/AudioBooMediaItem.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/AudioBooMediaItem.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/AudioBooService.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/AudioBooService.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/ios/AudioBooMediaItemsController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/ios/AudioBooMediaItemsController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/ios/AudioBooTableViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/ios/AudioBooTableViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/ios/AudioVersionsController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/ios/AudioVersionsController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/ios/AuthorsLetterGroupsTableViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/ios/AuthorsLetterGroupsTableViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/ios/AuthorsLettersTableViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/ios/AuthorsLettersTableViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/ios/AuthorsTableViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/ios/AuthorsTableViewController.swift" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="macos_iosmac_x86_64" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1WabixfF7n6QpBwPpFf7tvbLvYY" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="AudioBooSite" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="AudioBooSite" TARGET_NAME="AudioBooSite" CONFIG_NAME="Debug" SCHEME_NAME="AudioBooSite" IS_LOCATION_SIMULATION_ALLOWED="true" APPLICATION_LANGUAGE="IDELaunchSchemeLanguageUseSystemLanguage" APPLICATION_REGION="" MAKE_ACTIVE="TRUE" SHOULD_DEBUG_EXTENSIONS="false">
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <embedded_app_extension_list />
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b68012ae-aae4-41e3-ad50-3985f00c4974" name="Default Changelist" comment="" />
+      <created>1579390783553</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579390783553</updated>
+      <workItem from="1579390789284" duration="546000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="404" y="223" width="670" height="676" key="search.everywhere.popup" timestamp="1579390930765">
+      <screen x="39" y="23" width="1401" height="877" />
+    </state>
+    <state x="404" y="223" width="670" height="676" key="search.everywhere.popup/39.23.1401.877@39.23.1401.877" timestamp="1579390930765" />
+  </component>
+</project>

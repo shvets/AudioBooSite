@@ -108,19 +108,20 @@ open class AudioBooTableViewController: UITableViewController {
           if let destination = segue.destination.getActionController() as? AudioItemsController {
             let configuration = service.getConfiguration()
 
-            let playerSettings = service.audioPlayer.audioPlayerSettings
-
+            let playerSettings = AudioPlayer.readSettings(AudioBooService.audioPlayerPropertiesFileName)
+            destination.playerSettings = playerSettings
+            
             if let dataSource = configuration["dataSource"] as? DataSource,
-              let currentBookId = playerSettings?.items["currentBookId"],
-               let currentBookName = playerSettings?.items["currentBookName"],
-               let currentBookThumb = playerSettings?.items["currentBookThumb"] {
-
-              destination.name = currentBookName
-              destination.thumb = currentBookThumb
-              destination.id = currentBookId
-              destination.audioPlayer = service.audioPlayer
-
-              destination.loadAudioItems = AudioBooMediaItemsController.loadAudioItems(currentBookId, dataSource: dataSource)
+              let selectedBookId = playerSettings.items["selectedBookId"],
+              let selectedBookName = playerSettings.items["selectedBookName"],
+              let selectedBookThumb = playerSettings.items["selectedBookThumb"] {
+              destination.selectedBookId = selectedBookId
+              destination.selectedBookName = selectedBookName
+              destination.selectedBookThumb = selectedBookThumb
+              destination.selectedItemId = Int(playerSettings.items["selectedItemId"]!)
+              destination.currentSongPosition = Float(playerSettings.items["currentSongPosition"]!)!
+              
+              destination.loadAudioItems = AudioBooMediaItemsController.loadAudioItems(selectedBookId, dataSource: dataSource)
             }
           }
 

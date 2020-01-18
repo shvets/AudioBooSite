@@ -1,27 +1,25 @@
-import WebAPI
+import MediaApis
 import TVSetKit
-import AudioPlayer
-import RxSwift
 
 class AudioBooDataSource: DataSource {
   let service = AudioBooService.shared
 
-  override open func load(params: Parameters) throws -> Observable<[Any]> {
-    var items: Observable<[Any]> = Observable.just([])
+  override open func load(params: Parameters) throws -> [Any] {
+    var items: [Any] = []
 
     let selectedItem = params["selectedItem"] as? Item
 
     let request = params["requestType"] as! String
     let currentPage = params["currentPage"] as? Int ?? 1
     let pageSize = params["pageSize"] as? Int ?? 27
-    
+
     switch request {
     case "Bookmarks":
       if let bookmarksManager = params["bookmarksManager"] as? BookmarksManager,
          let bookmarks = bookmarksManager.bookmarks {
         let data = bookmarks.getBookmarks(pageSize: pageSize, page: currentPage)
 
-        items = Observable.just(adjustItems(data))
+        items = adjustItems(data)
       }
 
     case "History":
@@ -29,25 +27,25 @@ class AudioBooDataSource: DataSource {
          let history = historyManager.history {
         let data = history.getHistoryItems(pageSize: pageSize, page: currentPage)
 
-        items = Observable.just(adjustItems(data))
+        items = adjustItems(data)
       }
 
     case "Authors Letters":
-      items = service.getLetters().map { result in
-        return self.adjustItems(result)
-      }
+      let result = try service.getLetters()
+
+      items = self.adjustItems(result)
 
     case "Authors Letter Groups":
       if let letter = params["parentId"] as? String {
-        items = Observable.just(adjustItems(try getAuthorsByLetter(letter)))
+        items = adjustItems(try getAuthorsByLetter(letter))
       }
 
     case "All Books":
-      items = Observable.just(adjustItems(try service.getAllBooks(page: currentPage) as! [[String: Any]]))
-      
+      items = adjustItems(try service.getAllBooks(page: currentPage))
+
     case "Authors":
       if let selectedItem = selectedItem as? AudioBooMediaItem {
-        items = Observable.just(adjustItems(selectedItem.items))
+        items = adjustItems(selectedItem.items)
       }
 
     case "Versions":
@@ -57,18 +55,18 @@ class AudioBooDataSource: DataSource {
         let playlistUrls = try service.getPlaylistUrls(path)
 
         var list = [MediaItem]()
-        
+
         for (index, url) in playlistUrls.enumerated() {
           list.append(MediaItem(name: "Version \(index+1)", id: url))
         }
-        
-        items = Observable.just(list)
+
+        items = list
       }
 
     case "Author":
       if let selectedItem = selectedItem,
         let id = selectedItem.id {
-        items = Observable.just(adjustItems(try service.getBooks(id, page: currentPage)))
+        items = adjustItems(try service.getBooks(id, page: currentPage))
       }
 
     case "Tracks":
@@ -80,19 +78,22 @@ class AudioBooDataSource: DataSource {
         if playlistUrls.count > version {
           let url = playlistUrls[version]
 
-          items = Observable.just(adjustItems(try service.getAudioTracks(url)))
+          items = adjustItems(try service.getAudioTracks(url))
+        }
+        else {
+          items = adjustItems(try service.getAudioTracksNew(url))
         }
       }
 
     case "Search":
       if let query = params["query"] as? String {
         if !query.isEmpty {
-           items = Observable.just(adjustItems(try service.search(query, page: currentPage)))
+           items = adjustItems(try service.search(query, page: currentPage))
         }
       }
 
     default:
-      items = Observable.just([])
+      items = []
     }
 
     return items
@@ -123,6 +124,13 @@ class AudioBooDataSource: DataSource {
         let track = item as! AudioBooAPI.BooTrack
 
         return MediaItem(name: track.title + ".mp3", id: String(describing: track.url))
+      }
+    }
+    else if let items = items as? [AudioBooAPI.BooTrack2] {
+      newItems = transform(items) { item in
+        let track = item as! AudioBooAPI.BooTrack2
+
+        return MediaItem(name: track.title, id: String(describing: track.file))
       }
     }
     else if let items = items as? [[String: Any]] {
@@ -194,16 +202,18 @@ class AudioBooDataSource: DataSource {
 
     let authors = try service.getAuthorsByLetter(letter)
 
-    for (key, value) in authors {
-      if let group = value as? [NameClassifier.Item] {
-        var newGroup: [[String: String]] = []
+    for author in authors {
+      //if let group = author.value as? [NameClassifier.Item] {
+      let group = author.value
 
-        for el in group {
-          newGroup.append(["id": el.id, "name": el.name])
-        }
+      var newGroup: [[String: String]] = []
 
-        data.append(["name": key, "items": newGroup])
+      for el in group {
+        newGroup.append(["id": el.id, "name": el.name])
       }
+
+      data.append(["name": author.key, "items": newGroup])
+      //}
     }
 
     return data

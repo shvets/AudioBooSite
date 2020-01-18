@@ -12,6 +12,8 @@
 		36F91E4A1EA6BE09007E152D /* AudioBooSite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36F91E401EA6BE09007E152D /* AudioBooSite.framework */; };
 		36F91E4F1EA6BE09007E152D /* AudioBooSiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F91E4E1EA6BE09007E152D /* AudioBooSiteTests.swift */; };
 		36F91E511EA6BE09007E152D /* AudioBooSite.h in Headers */ = {isa = PBXBuildFile; fileRef = 36F91E431EA6BE09007E152D /* AudioBooSite.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4BCDEB3328894DC28FEF1A00 /* Pods_AudioBooSiteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A079A6A11A0C4FAE5185C96E /* Pods_AudioBooSiteTests.framework */; };
+		C5F1380E1FA26D1A61BFA87C /* Pods_AudioBooSite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDC027572974038D56F673EF /* Pods_AudioBooSite.framework */; };
 		D56A71F6EEA5127F3A9D0FBE /* AuthorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A721164FE49A67344A7A5 /* AuthorsTableViewController.swift */; };
 		D56A71FE782D975C8C96CE1E /* AudioBooDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A7D46B94A2874BCA014FB /* AudioBooDataSource.swift */; };
 		D56A73233333D3D01AC138B2 /* AudioBooMediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56A755620C582988CB45960 /* AudioBooMediaItem.swift */; };
@@ -41,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D9819A080C10C5E11F9522E /* Pods-AudioBooSiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioBooSiteTests.debug.xcconfig"; path = "Target Support Files/Pods-AudioBooSiteTests/Pods-AudioBooSiteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2DBA13D0DFD60B444E9FB672 /* AudioBooSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBooSite.swift; sourceTree = "<group>"; };
 		2DBA14A5A6FFEDAC67DBB084 /* AudioBooMediaItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBooMediaItemsController.swift; sourceTree = "<group>"; };
 		36F91E401EA6BE09007E152D /* AudioBooSite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AudioBooSite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +52,11 @@
 		36F91E491EA6BE09007E152D /* AudioBooSiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioBooSiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36F91E4E1EA6BE09007E152D /* AudioBooSiteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBooSiteTests.swift; sourceTree = "<group>"; };
 		36F91E501EA6BE09007E152D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		37DC4CD4A9784D7DED16E4A2 /* Pods-AudioBooSite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioBooSite.release.xcconfig"; path = "Target Support Files/Pods-AudioBooSite/Pods-AudioBooSite.release.xcconfig"; sourceTree = "<group>"; };
+		7D9DB8DBBB77D492A2F1E6FD /* Pods-AudioBooSite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioBooSite.debug.xcconfig"; path = "Target Support Files/Pods-AudioBooSite/Pods-AudioBooSite.debug.xcconfig"; sourceTree = "<group>"; };
+		A079A6A11A0C4FAE5185C96E /* Pods_AudioBooSiteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioBooSiteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDC027572974038D56F673EF /* Pods_AudioBooSite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioBooSite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D24862A70E1C05AE65498671 /* Pods-AudioBooSiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioBooSiteTests.release.xcconfig"; path = "Target Support Files/Pods-AudioBooSiteTests/Pods-AudioBooSiteTests.release.xcconfig"; sourceTree = "<group>"; };
 		D56A711BC6FBB3D5C367F8C3 /* AuthorsLettersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorsLettersTableViewController.swift; sourceTree = "<group>"; };
 		D56A721164FE49A67344A7A5 /* AuthorsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorsTableViewController.swift; sourceTree = "<group>"; };
 		D56A755620C582988CB45960 /* AudioBooMediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBooMediaItem.swift; sourceTree = "<group>"; };
@@ -89,6 +97,7 @@
 				FA6C12501EAEDF4B00DA4A90 /* SwiftSoup.framework in Frameworks */,
 				FA6C12511EAEDF4B00DA4A90 /* TVSetKit.framework in Frameworks */,
 				FA6C124A1EAEDF3800DA4A90 /* Runglish.framework in Frameworks */,
+				C5F1380E1FA26D1A61BFA87C /* Pods_AudioBooSite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,12 +106,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				36F91E4A1EA6BE09007E152D /* AudioBooSite.framework in Frameworks */,
+				4BCDEB3328894DC28FEF1A00 /* Pods_AudioBooSiteTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1404CB511E0DA64C3EDE1C5E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D9DB8DBBB77D492A2F1E6FD /* Pods-AudioBooSite.debug.xcconfig */,
+				37DC4CD4A9784D7DED16E4A2 /* Pods-AudioBooSite.release.xcconfig */,
+				1D9819A080C10C5E11F9522E /* Pods-AudioBooSiteTests.debug.xcconfig */,
+				D24862A70E1C05AE65498671 /* Pods-AudioBooSiteTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		36F91E361EA6BE09007E152D = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +131,7 @@
 				36F91E4D1EA6BE09007E152D /* AudioBooSiteTests */,
 				36F91E411EA6BE09007E152D /* Products */,
 				FA6C122E1EAED8F500DA4A90 /* Frameworks */,
+				1404CB511E0DA64C3EDE1C5E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,6 +201,8 @@
 				FA6C12331EAED8F500DA4A90 /* Unbox.framework */,
 				FA6C12341EAED8F500DA4A90 /* WebAPI.framework */,
 				FA6C12351EAED8F500DA4A90 /* Wrap.framework */,
+				BDC027572974038D56F673EF /* Pods_AudioBooSite.framework */,
+				A079A6A11A0C4FAE5185C96E /* Pods_AudioBooSiteTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -201,6 +225,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36F91E541EA6BE09007E152D /* Build configuration list for PBXNativeTarget "AudioBooSite" */;
 			buildPhases = (
+				8124A66B75D9EAF4B8B5E4D9 /* [CP] Check Pods Manifest.lock */,
 				36F91E3B1EA6BE09007E152D /* Sources */,
 				36F91E3C1EA6BE09007E152D /* Frameworks */,
 				36F91E3D1EA6BE09007E152D /* Headers */,
@@ -219,6 +244,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36F91E571EA6BE09007E152D /* Build configuration list for PBXNativeTarget "AudioBooSiteTests" */;
 			buildPhases = (
+				85D1E575199CD161524475A6 /* [CP] Check Pods Manifest.lock */,
 				36F91E451EA6BE09007E152D /* Sources */,
 				36F91E461EA6BE09007E152D /* Frameworks */,
 				36F91E471EA6BE09007E152D /* Resources */,
@@ -260,6 +286,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				ru,
 			);
@@ -291,6 +318,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8124A66B75D9EAF4B8B5E4D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AudioBooSite-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85D1E575199CD161524475A6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AudioBooSiteTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		36F91E3B1EA6BE09007E152D /* Sources */ = {
@@ -391,13 +465,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -447,11 +521,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -461,6 +535,7 @@
 		};
 		36F91E551EA6BE09007E152D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D9DB8DBBB77D492A2F1E6FD /* Pods-AudioBooSite.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -470,16 +545,18 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rubikon.AudioBooSite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		36F91E561EA6BE09007E152D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37DC4CD4A9784D7DED16E4A2 /* Pods-AudioBooSite.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -489,35 +566,38 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rubikon.AudioBooSite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		36F91E581EA6BE09007E152D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D9819A080C10C5E11F9522E /* Pods-AudioBooSiteTests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = Y63DEDERL2;
 				INFOPLIST_FILE = AudioBooSiteTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rubikon.AudioBooSiteTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		36F91E591EA6BE09007E152D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D24862A70E1C05AE65498671 /* Pods-AudioBooSiteTests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = Y63DEDERL2;
 				INFOPLIST_FILE = AudioBooSiteTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rubikon.AudioBooSiteTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
