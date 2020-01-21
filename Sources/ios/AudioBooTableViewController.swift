@@ -36,6 +36,7 @@ open class AudioBooTableViewController: UITableViewController {
       MediaName(name: "History", imageName: "Bookmark"),
       MediaName(name: "All Books", imageName: "Mark Twain"),
       MediaName(name: "Authors", imageName: "Mark Twain"),
+      MediaName(name: "Performers", imageName: "Mark Twain"),
       MediaName(name: "Settings", imageName: "Engineering"),
       MediaName(name: "Search", imageName: "Search")
     ]
@@ -76,6 +77,9 @@ open class AudioBooTableViewController: UITableViewController {
         case "Authors":
           performSegue(withIdentifier: "Authors Letters", sender: view)
 
+        case "Performers":
+          performSegue(withIdentifier: "Performers Letters", sender: view)
+        
         case "Settings":
           performSegue(withIdentifier: "Settings", sender: view)
 

@@ -69,6 +69,27 @@ class AudioBooDataSource: DataSource {
         items = adjustItems(try service.getBooks(id, page: currentPage))
       }
 
+    case "Performers Letters":
+      let result = try service.getPerformersLetters()
+
+      items = self.adjustItems(result)
+      
+    case "Performers Letter Groups":
+      if let letter = params["parentId"] as? String {
+        items = adjustItems(try getPerformersByLetter(letter))
+      }
+      
+    case "Performers":
+      if let selectedItem = selectedItem as? AudioBooMediaItem {
+        items = adjustItems(selectedItem.items)
+      }
+
+    case "Performer":
+      if let selectedItem = selectedItem,
+        let id = selectedItem.id {
+        items = adjustItems(try service.getBooks(id, page: currentPage))
+      }
+      
     case "Tracks":
       if let url = params["url"] as? String {
         let playlistUrls = try service.getPlaylistUrls(url)
@@ -203,7 +224,6 @@ class AudioBooDataSource: DataSource {
     let authors = try service.getAuthorsByLetter(letter)
 
     for author in authors {
-      //if let group = author.value as? [NameClassifier.Item] {
       let group = author.value
 
       var newGroup: [[String: String]] = []
@@ -213,12 +233,35 @@ class AudioBooDataSource: DataSource {
       }
 
       data.append(["name": author.key, "items": newGroup])
-      //}
     }
 
     return data
   }
 
+  func getPerformersByLetter(_ letter: String) throws -> [[String: Any]] {
+    var data = [[String: Any]]()
+
+    let performers = try service.getPerformers()
+
+    for performer in performers {
+      let key = performer.key
+      
+      if key.starts(with: letter)  {
+       let group = performer.value
+
+       var newGroup: [[String: String]] = []
+
+       for el in group {
+         newGroup.append(["id": el.id, "name": el.name])
+       }
+
+       data.append(["name": key, "items": newGroup])
+      }
+    }
+
+    return data
+  }
+  
   func getLetters(_ items: [NameClassifier.ItemsGroup]) -> [String] {
     var ruLetters = [String]()
     var enLetters = [String]()

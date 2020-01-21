@@ -30,6 +30,9 @@
 		FA6C12851EB04B7D00DA4A90 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA6C12841EB04B7D00DA4A90 /* Alamofire.framework */; };
 		FA73FD021EB0CB4800A26CD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA73FD041EB0CB4800A26CD8 /* Localizable.strings */; };
 		FAB6FCAE1FAE3D970086F458 /* AudioVersionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB6FCAD1FAE3D970086F458 /* AudioVersionsController.swift */; };
+		FAE1254623D54C7100264E61 /* PerformersLettersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1254523D54C7100264E61 /* PerformersLettersTableViewController.swift */; };
+		FAE1254823D54CDD00264E61 /* PerformersLetterGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1254723D54CDD00264E61 /* PerformersLetterGroupsTableViewController.swift */; };
+		FAE1254A23D54D2D00264E61 /* PerformersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE1254923D54D2C00264E61 /* PerformersTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,9 @@
 		FA73FD031EB0CB4800A26CD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA73FD051EB0CB5000A26CD8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FAB6FCAD1FAE3D970086F458 /* AudioVersionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioVersionsController.swift; sourceTree = "<group>"; };
+		FAE1254523D54C7100264E61 /* PerformersLettersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformersLettersTableViewController.swift; sourceTree = "<group>"; };
+		FAE1254723D54CDD00264E61 /* PerformersLetterGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformersLetterGroupsTableViewController.swift; sourceTree = "<group>"; };
+		FAE1254923D54D2C00264E61 /* PerformersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformersTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +184,9 @@
 				D56A721164FE49A67344A7A5 /* AuthorsTableViewController.swift */,
 				D56A75C93A274283C4FDBF8F /* SettingsTableController.swift */,
 				FAB6FCAD1FAE3D970086F458 /* AudioVersionsController.swift */,
+				FAE1254523D54C7100264E61 /* PerformersLettersTableViewController.swift */,
+				FAE1254723D54CDD00264E61 /* PerformersLetterGroupsTableViewController.swift */,
+				FAE1254923D54D2C00264E61 /* PerformersTableViewController.swift */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -373,8 +382,10 @@
 			files = (
 				D56A71FE782D975C8C96CE1E /* AudioBooDataSource.swift in Sources */,
 				D56A73233333D3D01AC138B2 /* AudioBooMediaItem.swift in Sources */,
+				FAE1254A23D54D2D00264E61 /* PerformersTableViewController.swift in Sources */,
 				D56A79475E9FD2FA43066D7C /* AudioBooService.swift in Sources */,
 				D56A78A8BD954C5C9402AFF9 /* AudioBooTableViewController.swift in Sources */,
+				FAE1254623D54C7100264E61 /* PerformersLettersTableViewController.swift in Sources */,
 				D56A78E3353E302476E5F97E /* AuthorsLetterGroupsTableViewController.swift in Sources */,
 				FAB6FCAE1FAE3D970086F458 /* AudioVersionsController.swift in Sources */,
 				D56A7D121313058FDE6A6FDE /* AuthorsLettersTableViewController.swift in Sources */,
@@ -382,6 +393,7 @@
 				D56A78FA86458CE09235C8BB /* SettingsTableController.swift in Sources */,
 				2DBA15FB9C9B9AEDF5FFF9D5 /* AudioBooSite.swift in Sources */,
 				2DBA1CD3719CC1E94C42DE41 /* AudioBooMediaItemsController.swift in Sources */,
+				FAE1254823D54CDD00264E61 /* PerformersLetterGroupsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
