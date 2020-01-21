@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b68012ae-aae4-41e3-ad50-3985f00c4974" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Sources/ios/PerformersLetterGroupsTableViewController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sources/ios/PerformersLettersTableViewController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sources/ios/PerformersTableViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AudioBooSite.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/AudioBooSite.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/AudioBooDataSource.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/AudioBooDataSource.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/en.lproj/Localizable.strings" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/en.lproj/Localizable.strings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/ios/AudioBooTableViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/ios/AudioBooTableViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sources/ru.lproj/Localizable.strings" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/ru.lproj/Localizable.strings" afterDir="false" />
-    </list>
+    <list default="true" id="b68012ae-aae4-41e3-ad50-3985f00c4974" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +60,7 @@
       <updated>1579390783553</updated>
       <workItem from="1579390789284" duration="546000" />
       <workItem from="1579391417462" duration="141000" />
-      <workItem from="1579488366825" duration="3898000" />
+      <workItem from="1579488366825" duration="3932000" />
     </task>
     <task id="LOCAL-00001" summary="update project">
       <created>1579391467702</created>
@@ -93,30 +83,42 @@
       <option name="project" value="LOCAL" />
       <updated>1579391544923</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add support for performers">
+      <created>1579571196650</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1579571196650</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="update project" />
-    <option name="LAST_COMMIT_MESSAGE" value="update project" />
+    <MESSAGE value="add support for performers" />
+    <option name="LAST_COMMIT_MESSAGE" value="add support for performers" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="277" y="63" key="CommitChangelistDialog2" timestamp="1579391544635">
-      <screen x="39" y="23" width="1401" height="877" />
+    <state x="278" y="63" key="CommitChangelistDialog2" timestamp="1579571196419">
+      <screen x="40" y="23" width="1400" height="877" />
     </state>
     <state x="277" y="63" key="CommitChangelistDialog2/39.23.1401.877@39.23.1401.877" timestamp="1579391544635" />
+    <state x="278" y="63" key="CommitChangelistDialog2/40.23.1400.877@40.23.1400.877" timestamp="1579571196419" />
     <state x="150" y="143" width="1181" height="637" key="DiffContextDialog" timestamp="1579571172632">
       <screen x="40" y="23" width="1400" height="877" />
     </state>
     <state x="148" y="143" width="1182" height="637" key="DiffContextDialog/38.23.1402.877@38.23.1402.877" timestamp="1579488897265" />
     <state x="150" y="143" width="1181" height="637" key="DiffContextDialog/40.23.1400.877@40.23.1400.877" timestamp="1579571172632" />
-    <state x="339" y="201" key="Vcs.Push.Dialog.v2" timestamp="1579391546925">
-      <screen x="39" y="23" width="1401" height="877" />
+    <state x="340" y="201" key="Vcs.Push.Dialog.v2" timestamp="1579571198283">
+      <screen x="40" y="23" width="1400" height="877" />
     </state>
     <state x="339" y="201" key="Vcs.Push.Dialog.v2/39.23.1401.877@39.23.1401.877" timestamp="1579391546925" />
+    <state x="340" y="201" key="Vcs.Push.Dialog.v2/40.23.1400.877@40.23.1400.877" timestamp="1579571198283" />
     <state x="394" y="218" width="689" height="486" key="find.popup" timestamp="1579492761334">
       <screen x="39" y="23" width="1401" height="877" />
     </state>
